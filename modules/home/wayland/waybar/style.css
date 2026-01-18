@@ -1,0 +1,89 @@
+@import "./rose-pine-moon.css";
+
+* {
+  border: none;
+  font-family: "Font Awesome 7 Free";
+  font-size: 12px;
+}
+
+window#waybar {
+  background: transparent;
+  color: @base;
+}
+
+tooltip {
+  background: @base;
+  border-radius: 16px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: @overlay;
+}
+
+#workspaces {
+  background-color: @overlay;
+  border-radius: 16px 0px 0px 16px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#workspaces button {
+  padding: 8px 8px 8px 8px;
+  color: @text;
+}
+
+#workspaces button:hover {
+  background: @base;
+  border-radius: 16px;
+}
+
+#idle_inhibitor,
+#network,
+#bluetooth,
+#pulseaudio,
+#backlight,
+#battery,
+#clock {
+  background-color: @base;
+  padding: 8px 8px 8px 8px;
+}
+
+#idle_inhibitor {
+  color: @subtle;
+  border-radius: 0px 0px 0px 0px;
+  padding-left: 8px;
+}
+
+#network {
+  color: @love;
+}
+
+#bluetooth {
+  color: @gold;
+}
+
+#pulseaudio {
+  color: @rose;
+}
+
+#backlight {
+  color: @pine;
+}
+
+#battery {
+  color: @foam;
+}
+
+#battery.charging {
+  color: @foam;
+}
+
+#battery.warning:not(.charging) {
+  background-color: @foam;
+  color: @base;
+}
+
+#clock {
+  color: @iris;
+  border-radius: 0px 16px 16px 0px;
+  padding-right: 8px;
+}

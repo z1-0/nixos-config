@@ -1,0 +1,330 @@
+{ flake, pkgs, ... }:
+let
+  inherit (flake) config inputs;
+in
+{
+  imports = [
+    inputs.zen-browser.homeModules.beta
+  ];
+
+  xdg.mimeApps =
+    let
+      associations = builtins.listToAttrs (
+        map
+          (name: {
+            inherit name;
+            value =
+              let
+                zen-browser = config.programs.zen-browser.package;
+              in
+              zen-browser.meta.desktopFileName;
+          })
+          [
+            "application/x-extension-shtml"
+            "application/x-extension-xhtml"
+            "application/x-extension-html"
+            "application/x-extension-xht"
+            "application/x-extension-htm"
+            "x-scheme-handler/unknown"
+            "x-scheme-handler/mailto"
+            "x-scheme-handler/chrome"
+            "x-scheme-handler/about"
+            "x-scheme-handler/https"
+            "x-scheme-handler/http"
+            "application/xhtml+xml"
+            "application/json"
+            "text/plain"
+            "text/html"
+          ]
+      );
+    in
+    {
+      associations.added = associations;
+      defaultApplications = associations;
+    };
+
+  programs.zen-browser = {
+    enable = true;
+
+    languagePacks = [
+      "zh-CN"
+      "en-US"
+    ];
+
+    policies =
+      let
+        mkLockedAttrs = builtins.mapAttrs (
+          _: value: {
+            Value = value;
+            Status = "locked";
+          }
+        );
+
+        mkPluginUrl = id: "https://addons.mozilla.org/firefox/downloads/latest/${id}/latest.xpi";
+
+        mkExtensionEntry =
+          {
+            id,
+            pinned ? false,
+          }:
+          let
+            base = {
+              install_url = mkPluginUrl id;
+              installation_mode = "force_installed";
+            };
+          in
+          if pinned then base // { default_area = "navbar"; } else base;
+
+        mkExtensionSettings = builtins.mapAttrs (
+          _: entry: if builtins.isAttrs entry then entry else mkExtensionEntry { id = entry; }
+        );
+      in
+      {
+        AutofillAddressEnabled = true;
+        AutofillCreditCardEnabled = false;
+        DisableAppUpdate = true;
+        DisableFeedbackCommands = true;
+        DisableFirefoxStudies = true;
+        DisablePocket = true; # save webs for later reading
+        DisableTelemetry = true;
+        DontCheckDefaultBrowser = true;
+        OfferToSaveLogins = false;
+        EnableTrackingProtection = {
+          Value = true;
+          Locked = true;
+          Cryptomining = true;
+          Fingerprinting = true;
+        };
+        ExtensionSettings = mkExtensionSettings {
+          "uBlock0@raymondhill.net" = mkExtensionEntry {
+            id = "ublock-origin";
+            pinned = true;
+          };
+          "jid1-Om7eJGwA1U8Akg@jetpack" = "octotree";
+          "{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}" = "refined-github-";
+          "{446900e4-71c2-419f-a6a7-df9c091e268b}" = "bitwarden-password-manager";
+          "{e58d3966-3d76-4cd9-8552-1582fbc800c1}" = "buster-captcha-solver";
+          "{5efceaa7-f3a2-4e59-a54b-85319448e305}" = "immersive-translate";
+        };
+        Preferences = mkLockedAttrs {
+          "browser.aboutConfig.showWarning" = false;
+          "browser.tabs.warnOnClose" = false;
+          "browser.newtabpage.activity-stream.feeds.topsites" = false;
+          "browser.topsites.contile.enabled" = false;
+          "browser.tabs.hoverPreview.enabled" = true;
+          "browser.tabs.insertAfterCurrent" = true;
+          "browser.tabs.insertRelatedAfterCurrent" = true;
+          "privacy.resistFingerprinting" = true;
+          "privacy.firstparty.isolate" = true;
+          "network.cookie.cookieBehavior" = 5;
+          "dom.battery.enabled" = false;
+          "media.videocontrols.picture-in-picture.video-toggle.enabled" = true;
+          "gfx.webrender.all" = true;
+          "network.http.http3.enabled" = true;
+        };
+      };
+
+    profiles.default =
+      let
+        containers = {
+          Work = {
+            color = "blue";
+            icon = "briefcase";
+            id = 1;
+          };
+          Life = {
+            color = "green";
+            icon = "tree";
+            id = 2;
+          };
+        };
+        spaces = {
+          "Rendezvous" = {
+            id = "572910e1-4468-4832-a869-0b3a93e2f165";
+            icon = "🎭";
+            position = 1000;
+            container = containers.Life.id;
+          };
+          "Github" = {
+            id = "08be3ada-2398-4e63-bb8e-f8bf9caa8d10";
+            icon = "🐙";
+            position = 2000;
+            theme = {
+              type = "gradient";
+              colors = [
+                {
+                  red = 185;
+                  green = 200;
+                  blue = 215;
+                  algorithm = "floating";
+                  type = "explicit-lightness";
+                }
+              ];
+              opacity = 0.8;
+              texture = 0.5;
+            };
+          };
+          "Nix" = {
+            id = "2441acc9-79b1-4afb-b582-ee88ce554ec0";
+            icon = "❄️";
+            position = 3000;
+            theme = {
+              type = "gradient";
+              colors = [
+                {
+                  red = 150;
+                  green = 190;
+                  blue = 230;
+                  algorithm = "floating";
+                  type = "explicit-lightness";
+                }
+              ];
+              opacity = 0.2;
+              texture = 0.5;
+            };
+          };
+        };
+        pins = {
+          "mail" = {
+            id = "9d8a8f91-7e29-4688-ae2e-da4e49d4a179";
+            container = containers.Life.id;
+            url = "https://outlook.live.com/mail/";
+            isEssential = true;
+            position = 101;
+          };
+          "Notion" = {
+            id = "8af62707-0722-4049-9801-bedced343333";
+            container = containers.Life.id;
+            url = "https://notion.com";
+            isEssential = true;
+            position = 102;
+          };
+          "Folo" = {
+            id = "fb316d70-2b5e-4c46-bf42-f4e82d635153";
+            container = containers.Life.id;
+            url = "https://app.folo.is/";
+            isEssential = true;
+            position = 103;
+          };
+          "Nix awesome" = {
+            id = "d85a9026-1458-4db6-b115-346746bcc692";
+            workspace = spaces.Nix.id;
+            isGroup = true;
+            isFolderCollapsed = false;
+            editedTitle = true;
+            position = 200;
+          };
+          "Nix Packages" = {
+            id = "f8dd784e-11d7-430a-8f57-7b05ecdb4c77";
+            workspace = spaces.Nix.id;
+            folderParentId = pins."Nix awesome".id;
+            url = "https://search.nixos.org/packages";
+            position = 201;
+          };
+          "Nix Options" = {
+            id = "92931d60-fd40-4707-9512-a57b1a6a3919";
+            workspace = spaces.Nix.id;
+            folderParentId = pins."Nix awesome".id;
+            url = "https://search.nixos.org/options";
+            position = 202;
+          };
+          "Home Manager Options" = {
+            id = "2eed5614-3896-41a1-9d0a-a3283985359b";
+            workspace = spaces.Nix.id;
+            folderParentId = pins."Nix awesome".id;
+            url = "https://home-manager-options.extranix.com";
+            position = 203;
+          };
+        };
+      in
+      {
+        settings = {
+          "intl.locale.requested" = "zh-CN,en-US";
+          "zen.workspaces.continue-where-left-off" = true;
+          "zen.workspaces.natural-scroll" = true;
+          "zen.view.compact.hide-tabbar" = true;
+          "zen.view.compact.hide-toolbar" = true;
+          "zen.view.compact.animate-sidebar" = false;
+          "zen.welcome-screen.seen" = true;
+        };
+
+        containersForce = true;
+        pinsForce = true;
+        spacesForce = true;
+        inherit containers pins spaces;
+
+        search = {
+          force = true;
+          default = "google";
+          engines =
+            let
+              nixSnowflakeIcon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            in
+            {
+              "Nix Packages" = {
+                urls = [
+                  {
+                    template = "https://search.nixos.org/packages";
+                    params = [
+                      {
+                        name = "type";
+                        value = "packages";
+                      }
+                      {
+                        name = "channel";
+                        value = "unstable";
+                      }
+                      {
+                        name = "query";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
+                icon = nixSnowflakeIcon;
+                definedAliases = [ "@nixp" ];
+              };
+              "Nix Options" = {
+                urls = [
+                  {
+                    template = "https://search.nixos.org/options";
+                    params = [
+                      {
+                        name = "channel";
+                        value = "master";
+                      }
+                      {
+                        name = "query";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
+                icon = nixSnowflakeIcon;
+                definedAliases = [ "@nixo" ];
+              };
+              "Home Manager Options" = {
+                urls = [
+                  {
+                    template = "https://home-manager-options.extranix.com/";
+                    params = [
+                      {
+                        name = "query";
+                        value = "{searchTerms}";
+                      }
+                      {
+                        name = "release";
+                        value = "master"; # unstable
+                      }
+                    ];
+                  }
+                ];
+                icon = nixSnowflakeIcon;
+                definedAliases = [ "@nixhm" ];
+              };
+              bing.metaData.hidden = "true";
+            };
+        };
+      };
+  };
+}
