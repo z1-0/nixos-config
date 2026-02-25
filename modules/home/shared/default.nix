@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   xdg.userDirs = {
     enable = true;
@@ -7,9 +6,5 @@
 
   home.sessionPath = [
     "$HOME/.local/bin"
-  ];
-
-  home.packages = with pkgs; [
-    opencode
   ];
 }
