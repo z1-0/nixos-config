@@ -6,7 +6,7 @@
     enable = true;
     lfs.enable = true;
     settings = {
-      user.name = flake.self.hive.user.username;
+      user.name = flake.self.hive.user.name;
       user.email = flake.self.hive.user.email;
       push.autoSetupRemote = true;
       protocol."https".allow = "always";

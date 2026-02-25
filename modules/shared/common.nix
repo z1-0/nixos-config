@@ -16,6 +16,6 @@
   ];
 
   programs.zsh.enable = true;
-  users.users.${flake.self.hive.user.username}.shell = pkgs.zsh;
+  users.users.${flake.self.hive.user.name}.shell = pkgs.zsh;
   environment.pathsToLink = [ "/share/zsh" ];
 }

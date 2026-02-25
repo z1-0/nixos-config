@@ -18,7 +18,7 @@ in
       users.users = {
         root.initialPassword = "root";
         nixos.initialPassword = "nixos";
-        ${self.hive.user.username}.initialPassword = "nixos";
+        ${self.hive.user.name}.initialPassword = "nixos";
       };
     };
   };

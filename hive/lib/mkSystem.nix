@@ -51,7 +51,7 @@ in
 
   mkHome = hmModules: {
     home-manager = {
-      users.${root.hive.user.username} =
+      users.${root.hive.user.name} =
         { osConfig, ... }:
         {
           home.stateVersion = osConfig.system.stateVersion;
