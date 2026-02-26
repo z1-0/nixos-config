@@ -39,7 +39,10 @@
       enable = true;
       settings = {
         gui.sidePanelWidth = 0.2;
-        git.useExternalDiffGitConfig = true;
+        git = {
+          useExternalDiffGitConfig = true;
+          overrideGpg = true;
+        };
       };
     };
 
