@@ -24,7 +24,6 @@
     stylua
 
     # nix
-    nil
     nixd
     nixfmt
     statix
