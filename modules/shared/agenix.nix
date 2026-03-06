@@ -1,12 +1,13 @@
 { flake, pkgs, ... }:
 let
   inherit (flake) self inputs;
-  inherit (inputs) agenix;
+  inherit (pkgs.stdenv.hostPlatform) system;
+  pkgs-agenix = inputs.agenix.packages.${system}.default;
 in
 {
-  imports = [ agenix.nixosModules.default ];
+  imports = [ inputs.agenix.nixosModules.default ];
 
-  environment.systemPackages = [ agenix.packages.${pkgs.stdenv.hostPlatform.system}.default ];
+  environment.systemPackages = [ pkgs-agenix ];
 
   age = {
     identityPaths = [ flake.self.hive.user.sshPrivKey ];

@@ -1,11 +1,12 @@
 { flake, pkgs, ... }:
 let
-  antigravityPkg = flake.inputs.antigravity-nix.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  inherit (pkgs.stdenv.hostPlatform) system;
+  pkgs-antigravity = flake.inputs.antigravity-nix.packages.${system}.default;
 in
 {
   home.packages = with pkgs; [
     opencode
     gemini-cli
-    antigravityPkg
+    pkgs-antigravity
   ];
 }
