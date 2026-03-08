@@ -1,14 +1,33 @@
-{ flake, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
-  inherit (pkgs.stdenv.hostPlatform) system;
-  llm-agents = flake.inputs.llm-agents.packages.${system};
-  pkgs-antigravity = flake.inputs.antigravity-nix.packages.${system}.default;
+  pkgs-ccr = pkgs.llm-agents.claude-code-router;
 in
 {
   home.packages = [
-    llm-agents.codex
-    llm-agents.opencode
-    pkgs.gemini-cli
-    pkgs-antigravity
+    pkgs.llm-agents.claude-code
+    pkgs-ccr
   ];
+
+  programs.zsh.initContent = lib.mkIf config.programs.zsh.enable ''
+    eval "$(${pkgs-ccr}/bin/ccr activate)"
+  '';
+
+  systemd.user.services.ccr = {
+    Unit = {
+      Description = "Claude Code Router";
+      After = [ "network.target" ];
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs-ccr}/bin/ccr start";
+      Restart = "on-failure";
+    };
+  };
 }

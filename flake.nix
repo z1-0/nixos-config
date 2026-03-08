@@ -9,10 +9,6 @@
       url = "https://flakehub.com/f/nix-darwin/nix-darwin/0.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,10 +51,6 @@
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    antigravity-nix = {
-      url = "github:jacopone/antigravity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llm-agents = {
