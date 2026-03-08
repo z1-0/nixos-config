@@ -32,9 +32,9 @@ diff:
 r:
     sudo nixos-rebuild switch --rollback
 
-# Update all flake inputs to latest versions
+# Update and commit flake.lock
 up:
-    nix flake update
+    nix flake update --commit-lock-file
 
 # Remove system generations older than 7 days
 clean:
