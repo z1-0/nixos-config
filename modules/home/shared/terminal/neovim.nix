@@ -8,9 +8,10 @@
   };
 
   home.packages = with pkgs; [
-    tree-sitter
     gcc
     nodejs
+    prettier
+    tree-sitter
 
     # lua
     lua51Packages.lua
