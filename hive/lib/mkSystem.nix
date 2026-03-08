@@ -10,21 +10,16 @@ in
       hostPlatform,
       modules,
     }:
-    {
-      networking = { inherit hostName; };
-      nixpkgs = { inherit hostPlatform; };
-
-      imports = modules ++ [
+    self._mkBaseSystem {
+      inherit hostName hostPlatform modules;
+      osModules = [
         (root + /configurations/nixos/${hostName}/configuration.nix)
         (root + /configurations/shared/nixos.nix)
-
         (import-tree (root + /modules/nixos))
-        (import-tree (root + /modules/shared))
-
-        (self.mkHome [
-          (import-tree (root + /modules/home/nixos))
-          (import-tree (root + /modules/home/shared))
-        ])
+      ];
+      hmModules = [
+        (import-tree (root + /modules/home/nixos))
+        (import-tree (root + /modules/home/shared))
       ];
     };
 
@@ -34,22 +29,39 @@ in
       hostPlatform,
       modules,
     }:
+    self._mkBaseSystem {
+      inherit hostName hostPlatform modules;
+      osModules = [
+        (import-tree (root + /modules/darwin))
+      ];
+      hmModules = [
+        (import-tree (root + /modules/home/darwin))
+        (import-tree (root + /modules/home/shared))
+      ];
+    };
+
+  _mkBaseSystem =
+    {
+      hostName,
+      hostPlatform,
+      modules ? [ ],
+      hmModules ? [ ],
+      osModules ? [ ],
+    }:
     {
       networking = { inherit hostName; };
       nixpkgs = { inherit hostPlatform; };
 
-      imports = modules ++ [
-        (import-tree (root + /modules/darwin))
-        (import-tree (root + /modules/shared))
-
-        (self.mkHome [
-          (import-tree (root + /modules/home/darwin))
-          (import-tree (root + /modules/home/shared))
-        ])
-      ];
+      imports =
+        modules
+        ++ osModules
+        ++ [
+          (import-tree (root + /modules/shared))
+          (self._mkHome hmModules)
+        ];
     };
 
-  mkHome = hmModules: {
+  _mkHome = hmModules: {
     home-manager = {
       users.${root.hive.user.name} =
         { osConfig, ... }:
