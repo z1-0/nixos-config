@@ -1,7 +1,7 @@
 { inputs, root, ... }@flake:
 {
-  flake.hive = inputs.haumea.lib.load {
-    src = root + /hive;
+  flake.lib = inputs.haumea.lib.load {
+    src = root + /lib;
     inputs = { inherit flake; };
   };
 }

@@ -4,13 +4,13 @@ let
   root = flake.self;
 in
 {
-  nixos =
+  mkNixos =
     {
       hostName,
       hostPlatform,
       modules,
     }:
-    self._mkBaseSystem {
+    self.mkBaseSystem {
       inherit hostName hostPlatform modules;
       osModules = [
         (root + /configurations/nixos/${hostName}/configuration.nix)
@@ -23,15 +23,17 @@ in
       ];
     };
 
-  darwin =
+  mkDarwin =
     {
       hostName,
       hostPlatform,
       modules,
     }:
-    self._mkBaseSystem {
+    self.mkBaseSystem {
       inherit hostName hostPlatform modules;
       osModules = [
+        (root + /configurations/darwin/${hostName}/configuration.nix)
+        (root + /configurations/shared/darwin.nix)
         (import-tree (root + /modules/darwin))
       ];
       hmModules = [
@@ -40,7 +42,7 @@ in
       ];
     };
 
-  _mkBaseSystem =
+  mkBaseSystem =
     {
       hostName,
       hostPlatform,
@@ -57,13 +59,13 @@ in
         ++ osModules
         ++ [
           (import-tree (root + /modules/shared))
-          (self._mkHome hmModules)
+          (self.mkHome hmModules)
         ];
     };
 
-  _mkHome = hmModules: {
+  mkHome = hmModules: {
     home-manager = {
-      users.${root.hive.user.name} =
+      users.${root.lib.user.name} =
         { osConfig, ... }:
         {
           home.stateVersion = osConfig.system.stateVersion;

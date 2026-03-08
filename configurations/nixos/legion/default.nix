@@ -3,7 +3,7 @@ let
   inherit (flake) self inputs;
   inherit (inputs) nixos-hardware;
 in
-self.hive.lib.mkSystem.nixos {
+self.lib.system.mkNixos {
   hostName = "legion";
   hostPlatform = "x86_64-linux";
 

@@ -24,12 +24,12 @@
         ++ config.pre-commit.settings.enabledPackages;
       };
 
-      treefmt.programs = lib.genAttrs self.hive.project.formatters (_: {
+      treefmt.programs = lib.genAttrs self.lib.project.formatters (_: {
         enable = true;
       });
 
       pre-commit.settings = {
-        hooks = lib.genAttrs self.hive.project.linters (_: {
+        hooks = lib.genAttrs self.lib.project.linters (_: {
           enable = true;
         });
         excludes = [

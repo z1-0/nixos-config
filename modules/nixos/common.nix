@@ -46,7 +46,7 @@ in
   };
 
   users = {
-    users.${flake.self.hive.user.name} = {
+    users.${flake.self.lib.user.name} = {
       isNormalUser = true;
       extraGroups = [
         "wheel"

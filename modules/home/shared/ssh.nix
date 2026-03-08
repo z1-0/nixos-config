@@ -5,7 +5,7 @@
     enableDefaultConfig = false;
     matchBlocks = {
       "*" = {
-        identityFile = flake.self.hive.user.sshPrivKey;
+        identityFile = flake.self.lib.user.sshPrivKey;
         forwardAgent = false;
         addKeysToAgent = "no";
         compression = false;

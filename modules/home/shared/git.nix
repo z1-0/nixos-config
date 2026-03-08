@@ -6,8 +6,8 @@
     enable = true;
     lfs.enable = true;
     settings = {
-      user.name = flake.self.hive.user.name;
-      user.email = flake.self.hive.user.email;
+      user.name = flake.self.lib.user.name;
+      user.email = flake.self.lib.user.email;
       push.autoSetupRemote = true;
       protocol."https".allow = "always";
       init.defaultBranch = "main";
@@ -24,7 +24,7 @@
     };
     signing = {
       format = "ssh";
-      key = flake.self.hive.user.sshPubKey;
+      key = flake.self.lib.user.sshPubKey;
       signByDefault = true;
     };
   };

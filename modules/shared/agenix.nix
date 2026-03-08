@@ -10,7 +10,7 @@ in
   environment.systemPackages = [ pkgs-agenix ];
 
   age = {
-    identityPaths = [ flake.self.hive.user.sshPrivKey ];
+    identityPaths = [ flake.self.lib.user.sshPrivKey ];
     secrets = {
       "mihomo.yaml".file = self + /secrets/mihomo.yaml.age;
 
