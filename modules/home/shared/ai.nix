@@ -21,11 +21,31 @@
       language = "chinese";
       permissions = {
         allow = [
-          "Bash(git:*)"
-          "Bash(gh run:*)"
+          "WebSearch(*)"
+          "Bash(git *)"
+          "Bash(gh *)"
         ];
         ask = [
-          "Bash(git push:*)"
+          "Bash(git push *)"
+          "Bash(git reset --hard *)"
+          "Bash(git clean -f *)"
+          "Bash(git restore -- *)"
+          "Bash(git tag -d *)"
+          "Bash(git rebase *)"
+          "Bash(git merge *)"
+
+          "Bash(gh * create *)"
+          "Bash(gh * edit *)"
+          "Bash(gh * close *)"
+          "Bash(gh * merge *)"
+          "Bash(gh * delete *)"
+          "Bash(gh * lock *)"
+          "Bash(gh * unlock *)"
+          "Bash(gh * reopen *)"
+          "Bash(gh api -X POST *)"
+          "Bash(gh api -X PUT *)"
+          "Bash(gh api -X PATCH *)"
+          "Bash(gh api -X DELETE *)"
         ];
         deny = [
           "Read(/run/agenix/**)"
