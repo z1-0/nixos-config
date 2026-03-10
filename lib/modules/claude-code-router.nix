@@ -7,46 +7,28 @@
 }:
 let
   name = "claude-code-router";
-  coreName = "claude-code";
 
   inherit (lib)
     mkIf
     mkMerge
     mkEnableOption
     mkPackageOption
-    optionals
     ;
 in
 {
-  options.programs.${name} = {
+  options.services.${name} = {
     enable = mkEnableOption name;
-    package = mkPackageOption pkgs.llm-agents name { };
+    package = mkPackageOption pkgs name { };
     enableBashIntegration = lib.hm.shell.mkBashIntegrationOption { inherit config; };
     enableZshIntegration = lib.hm.shell.mkZshIntegrationOption { inherit config; };
-    service.enable = mkEnableOption "the 'Claude Code Router' user service";
-
-    claude-code = {
-      enable = mkEnableOption coreName;
-      package = mkPackageOption pkgs.llm-agents coreName { };
-    };
   };
 
   config =
     let
-      cfg = config.programs.${name};
-      coreCfg = cfg.${coreName};
+      cfg = config.services.${name};
     in
     mkIf cfg.enable (mkMerge [
-
-      {
-        home.packages =
-          optionals coreCfg.enable [
-            coreCfg.package
-          ]
-          ++ [
-            cfg.package
-          ];
-      }
+      { home.packages = [ cfg.package ]; }
 
       (mkIf cfg.enableBashIntegration {
         programs.bash.initExtra = ''
@@ -60,7 +42,7 @@ in
         '';
       })
 
-      (mkIf (cfg.service.enable && pkgs.stdenv.isLinux) {
+      (mkIf pkgs.stdenv.isLinux {
         systemd.user.services.${name} = {
           Unit = {
             Description = "Claude Code Router";
@@ -78,7 +60,7 @@ in
         };
       })
 
-      (mkIf (cfg.service.enable && pkgs.stdenv.isDarwin) {
+      (mkIf pkgs.stdenv.isDarwin {
         launchd.agents.${name} = {
           enable = true;
           config = {
