@@ -18,6 +18,11 @@ in
         file = self + /secrets/nix-access-tokens.age;
         mode = "644";
       };
+
+      "gh-token" = {
+        file = self + /secrets/gh-token.age;
+        mode = "644";
+      };
     };
   };
 }

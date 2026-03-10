@@ -1,4 +1,8 @@
-{ flake, pkgs, ... }:
+{
+  flake,
+  pkgs,
+  ...
+}:
 {
   home.packages = [ pkgs.meld ];
 

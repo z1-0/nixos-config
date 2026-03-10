@@ -7,6 +7,7 @@ genAttrs
   [
     "mihomo.yaml.age"
     "nix-access-tokens.age"
+    "gh-token.age"
   ]
   (_: {
     publicKeys = [
