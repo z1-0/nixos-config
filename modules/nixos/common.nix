@@ -58,4 +58,6 @@ in
       ++ (optional config.services.displayManager.dms-greeter.enable "greeter");
     };
   };
+
+  services.envfs.enable = true;
 }
