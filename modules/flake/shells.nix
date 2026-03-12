@@ -29,9 +29,13 @@
       });
 
       pre-commit.settings = {
-        hooks = lib.genAttrs self.lib.project.linters (_: {
-          enable = true;
-        });
+        hooks =
+          lib.genAttrs self.lib.project.linters (_: {
+            enable = true;
+          })
+          // {
+            statix.settings.config.disabled = [ "repeated_keys" ];
+          };
         excludes = [
           "^secrets/"
         ];

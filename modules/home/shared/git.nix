@@ -1,6 +1,7 @@
 {
   flake,
   pkgs,
+  osConfig,
   ...
 }:
 {
@@ -33,23 +34,28 @@
     };
   };
 
-  programs = {
-    difftastic = {
-      enable = true;
-      git.enable = true;
-    };
+  programs.difftastic = {
+    enable = true;
+    git.enable = true;
+  };
 
-    lazygit = {
-      enable = true;
-      settings = {
-        gui.sidePanelWidth = 0.2;
-        git = {
-          useExternalDiffGitConfig = true;
-          overrideGpg = true;
-        };
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      gui.sidePanelWidth = 0.2;
+      git = {
+        useExternalDiffGitConfig = true;
+        overrideGpg = true;
       };
     };
-
-    mergiraf.enable = true;
   };
+
+  programs.mergiraf.enable = true;
+  programs.gh.enable = true;
+
+  programs.zsh.envExtra = ''
+    GITHUB_PAT="$(${pkgs.coreutils}/bin/cat ${osConfig.age.secrets."github-token".path})";
+    export GH_TOKEN=$GITHUB_PAT
+    export GITHUB_PERSONAL_ACCESS_TOKEN=$GITHUB_PAT
+  '';
 }

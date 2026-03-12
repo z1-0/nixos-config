@@ -6,7 +6,7 @@ default:
 
 # Validate flake configuration without building
 check:
-    nix flake check --no-build
+    nix flake check --no-build --show-trace
 
 # Format all files
 fmt:

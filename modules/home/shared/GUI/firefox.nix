@@ -42,7 +42,6 @@
         {
           packages = with pkgs.nur.repos.rycee.firefox-addons; [
             ublock-origin
-            firefox-color
             octotree
             refined-github
             bitwarden

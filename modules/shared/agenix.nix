@@ -19,8 +19,8 @@ in
         mode = "644";
       };
 
-      "gh-token" = {
-        file = self + /secrets/gh-token.age;
+      "github-token" = {
+        file = self + /secrets/github-token.age;
         mode = "644";
       };
     };
