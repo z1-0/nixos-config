@@ -5,6 +5,8 @@
   ...
 }:
 {
+  debug = true;
+
   imports = [
     inputs.treefmt-nix.flakeModule
     inputs.git-hooks-nix.flakeModule
@@ -34,7 +36,7 @@
             enable = true;
           })
           // {
-            statix.settings.config.disabled = [ "repeated_keys" ];
+            statix.settings.config = "${pkgs.writeText "statix.toml" ''disabled = [ "unquoted_uri" ]''}";
           };
         excludes = [
           "^secrets/"
