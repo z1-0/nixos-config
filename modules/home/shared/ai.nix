@@ -1,4 +1,4 @@
-{ flake, ... }:
+{ flake, config, ... }:
 {
   imports = [ flake.self.lib.modules.claude-code-router ];
 
@@ -54,6 +54,7 @@
         ];
         deny = [
           "Read(/run/agenix/**)"
+          "Read(${config.home.homeDirectory}/.zshenv)"
         ];
       };
       enabledPlugins = {

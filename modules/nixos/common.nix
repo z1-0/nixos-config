@@ -54,8 +54,9 @@ in
         "video"
       ]
       ++ (optional config.networking.networkmanager.enable "networkmanager")
+      ++ (optional config.services.displayManager.dms-greeter.enable "greeter")
       ++ (optional config.virtualisation.libvirtd.enable "libvirtd")
-      ++ (optional config.services.displayManager.dms-greeter.enable "greeter");
+      ++ (optional config.virtualisation.podman.enable "podman");
     };
   };
 
