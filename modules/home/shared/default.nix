@@ -2,17 +2,26 @@
   flake,
   osConfig,
   lib,
+  pkgs,
   ...
 }:
+let
+  inherit (pkgs.stdenv.hostPlatform) system;
+in
 {
   imports = [
     flake.inputs.nix-index-database.homeModules.default
   ];
 
-  home.shellAliases = lib.mkDefault osConfig.environment.shellAliases;
-  home.sessionPath = [
-    "$HOME/.local/bin"
-  ];
+  home = {
+    packages = [
+      flake.inputs.ah.packages.${system}.default
+    ];
+    shellAliases = lib.mkDefault osConfig.environment.shellAliases;
+    sessionPath = [
+      "$HOME/.local/bin"
+    ];
+  };
 
   xdg.userDirs = {
     enable = true;
