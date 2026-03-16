@@ -1,18 +1,24 @@
-{ flake, ... }:
+{
+  flake,
+  osConfig,
+  lib,
+  ...
+}:
 {
   imports = [
     flake.inputs.nix-index-database.homeModules.default
   ];
 
-  programs.nix-index.enable = true;
-  programs.nix-index-database.comma.enable = true;
+  home.shellAliases = lib.mkDefault osConfig.environment.shellAliases;
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
 
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
   };
 
-  home.sessionPath = [
-    "$HOME/.local/bin"
-  ];
+  programs.nix-index.enable = true;
+  programs.nix-index-database.comma.enable = true;
 }

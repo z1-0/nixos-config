@@ -12,6 +12,11 @@
       keybind = [
         "ctrl+shift+c=copy_to_clipboard"
         "ctrl+shift+v=paste_from_clipboard"
+        # "ctrl+shift+a=search"
+        # "ctrl+shift+s=search_selection"
+        # "ctrl+shift+d=navigate_search"
+        # "ctrl+shift+f=start_search"
+        # "ctrl+shift+g=end_search"
       ];
     };
   };

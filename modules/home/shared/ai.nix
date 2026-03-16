@@ -2,6 +2,8 @@
 {
   imports = [ flake.self.lib.modules.claude-code-router ];
 
+  services.claude-code-router.enable = true;
+
   home.shellAliases."c" = "claude";
 
   programs.claude-code = {
@@ -67,7 +69,6 @@
         "playwright@claude-plugins-official" = true;
         "pr-review-toolkit@claude-plugins-official" = true;
         "ralph-loop@claude-plugins-official" = true;
-        "superpowers@claude-plugins-official" = true;
 
         "voltagent-dev-exp@voltagent-subagents" = true;
       };
@@ -80,5 +81,4 @@
     };
   };
 
-  services.claude-code-router.enable = true;
 }

@@ -24,8 +24,9 @@ in
     enableVPN = true;
 
     plugins = {
-      dankBatteryAlerts.enable = true;
       commandRunner.enable = true;
+      dankBatteryAlerts.enable = true;
+      dockerManager.enable = true;
       niriWindows.enable = true;
     };
   };
@@ -34,7 +35,14 @@ in
 
   services.upower.enable = true;
 
-  environment.variables = {
-    DMS_HIDE_TRAYIDS = "fcitx";
+  environment = {
+    shellAliases = {
+      copy = "dms clipboard copy";
+      paste = "dms clipboard paste";
+    };
+
+    variables = {
+      DMS_HIDE_TRAYIDS = "fcitx";
+    };
   };
 }
