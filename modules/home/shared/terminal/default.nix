@@ -5,7 +5,6 @@
     shell.enableBashIntegration = false;
 
     shellAliases = {
-      ls = "eza";
       cat = "bat";
     };
 

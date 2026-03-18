@@ -82,12 +82,16 @@
         "pr-review-toolkit@claude-plugins-official" = true;
         "ralph-loop@claude-plugins-official" = true;
         "security-guidance@claude-plugins-official" = true;
-        "superpowers@claude-plugins-official" = true;
 
+        "superpowers@superpowers-dev" = true;
         "voltagent-dev-exp@voltagent-subagents" = true;
         "agent-browser@agent-browser" = true;
       };
       extraKnownMarketplaces = {
+        "superpowers-dev".source = {
+          source = "github";
+          repo = "obra/superpowers";
+        };
         "voltagent-subagents".source = {
           source = "github";
           repo = "VoltAgent/awesome-claude-code-subagents";

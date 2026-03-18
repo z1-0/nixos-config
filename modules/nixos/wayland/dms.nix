@@ -1,6 +1,7 @@
 {
   flake,
   pkgs,
+  lib,
   ...
 }:
 let
@@ -36,7 +37,7 @@ in
   services.upower.enable = true;
 
   environment = {
-    shellAliases = {
+    shellAliases = lib.mkForce {
       copy = "dms clipboard copy";
       paste = "dms clipboard paste";
     };

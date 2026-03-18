@@ -17,7 +17,7 @@ in
     packages = [
       flake.inputs.ah.packages.${system}.default
     ];
-    shellAliases = lib.mkDefault osConfig.environment.shellAliases;
+    shellAliases = osConfig.environment.shellAliases;
     sessionPath = [
       "$HOME/.local/bin"
     ];
