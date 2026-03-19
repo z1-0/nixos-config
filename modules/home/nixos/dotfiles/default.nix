@@ -5,11 +5,6 @@
     recursive = true;
   };
 
-  xdg.configFile."nvim" = {
-    source = ./nvim;
-    recursive = true;
-  };
-
   home.activation.mkDmsGenConfigs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p ~/.config/niri/dms
     touch ~/.config/niri/dms/{alttab,binds,colors,cursor,layout,outputs,windowrules,wpblur}.kdl

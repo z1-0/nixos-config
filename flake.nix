@@ -62,14 +62,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.treefmt-nix.follows = "treefmt-nix";
     };
-    ah = {
-      url = "github:z1-0/ah.sh";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "treefmt-nix";
-        git-hooks-nix.follows = "git-hooks-nix";
-      };
-    };
+    # ah = {
+    #   url = "github:z1-0/ah.sh";
+    #   inputs = {
+    #     nixpkgs.follows = "nixpkgs";
+    #     treefmt-nix.follows = "treefmt-nix";
+    #     git-hooks-nix.follows = "git-hooks-nix";
+    #   };
+    # };
 
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";

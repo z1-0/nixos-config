@@ -1,7 +1,6 @@
 {
   flake,
   osConfig,
-  lib,
   pkgs,
   ...
 }:
@@ -15,9 +14,11 @@ in
 
   home = {
     packages = [
-      flake.inputs.ah.packages.${system}.default
+      # flake.inputs.ah.packages.${system}.default
     ];
+
     shellAliases = osConfig.environment.shellAliases;
+
     sessionPath = [
       "$HOME/.local/bin"
     ];
