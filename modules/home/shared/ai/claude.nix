@@ -75,7 +75,6 @@
         "commit-commands@claude-plugins-official" = true;
         "context7@claude-plugins-official" = true;
         "feature-dev@claude-plugins-official" = true;
-        "figma@claude-plugins-official" = true;
         "frontend-design@claude-plugins-official" = true;
         "github@claude-plugins-official" = true;
         "playwright@claude-plugins-official" = true;

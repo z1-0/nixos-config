@@ -26,6 +26,9 @@
         zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
         zstyle ':fzf-tab:*' use-fzf-default-opts yes
         zstyle ':fzf-tab:*' switch-group '<' '>'
+
+        POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+        typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
       ''
     ];
 
@@ -55,11 +58,11 @@
         src = pkgs.zsh-powerlevel10k;
         file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       }
-      {
-        name = "p10k-config";
-        src = ./p10k-config;
-        file = "p10k.zsh";
-      }
+      # {
+      #   name = "p10k-config";
+      #   src = ./p10k-config;
+      #   file = "p10k.zsh";
+      # }
     ];
   };
 }
