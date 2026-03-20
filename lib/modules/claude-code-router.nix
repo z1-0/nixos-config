@@ -1,4 +1,4 @@
-{ _ }:
+{ flake, ... }:
 {
   config,
   lib,
@@ -28,7 +28,12 @@ in
       cfg = config.services.${name};
     in
     mkIf cfg.enable (mkMerge [
-      { home.packages = [ cfg.package ]; }
+      {
+        home.packages = [
+          cfg.package
+          flake.self.packages.${pkgs.stdenv.hostPlatform.system}.ccr-ping
+        ];
+      }
 
       (mkIf cfg.enableBashIntegration {
         programs.bash.initExtra = ''
