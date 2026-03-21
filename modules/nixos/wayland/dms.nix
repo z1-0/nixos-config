@@ -27,6 +27,7 @@ in
     plugins = {
       commandRunner.enable = true;
       dankBatteryAlerts.enable = true;
+      dankHooks.enable = true;
       dockerManager.enable = true;
       niriWindows.enable = true;
     };
