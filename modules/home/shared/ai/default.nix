@@ -6,6 +6,8 @@ in
   home.packages = with pkgs; [
     flake.inputs.antigravity-nix.packages.${system}.default
     llm-agents.gemini-cli
+    llm-agents.codex
     # llm-agents.openclaw
+    # llm-agents.cli-proxy-api
   ];
 }

@@ -46,6 +46,7 @@
             refined-github
             bitwarden
             buster-captcha-solver
+            vimium
             (ignoreVulnerabilities immersive-translate)
           ];
         };
