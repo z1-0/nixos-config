@@ -9,17 +9,17 @@
 
   home.packages = with pkgs; [
     gcc
+
+    bun
     nodejs
     prettier
     tree-sitter
 
-    # lua
     lua51Packages.lua
     lua51Packages.lua-lsp
     lua51Packages.luarocks
     stylua
 
-    # nix
     nixd
     nixfmt
     statix

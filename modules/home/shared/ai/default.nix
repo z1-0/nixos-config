@@ -4,6 +4,8 @@ let
 in
 {
   home.packages = with pkgs; [
+    playwright
+    playwright-mcp
     flake.inputs.antigravity-nix.packages.${system}.default
     llm-agents.gemini-cli
     llm-agents.codex
