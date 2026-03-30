@@ -4,6 +4,7 @@ let
 in
 {
   home.packages = with pkgs; [
+    bubblewrap
     playwright
     playwright-mcp
     flake.inputs.antigravity-nix.packages.${system}.default
