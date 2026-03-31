@@ -82,6 +82,8 @@
         "ralph-loop@claude-plugins-official" = true;
         "security-guidance@claude-plugins-official" = true;
 
+        "rust-analyzer-lsp@claude-plugins-official" = true;
+
         "superpowers@superpowers-dev" = true;
         "voltagent-dev-exp@voltagent-subagents" = true;
         "agent-browser@agent-browser" = true;
