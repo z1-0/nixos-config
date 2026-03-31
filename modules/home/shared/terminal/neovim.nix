@@ -23,5 +23,7 @@
     nixd
     nixfmt
     statix
+
+    markdownlint-cli2
   ];
 }
