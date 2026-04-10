@@ -32,19 +32,12 @@ in
         "pipe-operators"
       ];
 
-      # substituters = [
-      #   "https://cache.nixos.org/?priority=10"
-      # ];
-      #
-      # trusted-public-keys = [
-      #   "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      # ];
-
       extra-substituters = [
         "https://cache.garnix.io"
         "https://cache.numtide.com"
-        "hyyps://z1-0.cachix.org"
+        "https://z1-0.cachix.org"
       ];
+
       extra-trusted-public-keys = [
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
         "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="

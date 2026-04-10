@@ -1,7 +1,6 @@
 {
   flake,
   pkgs,
-  config,
   ...
 }:
 {
@@ -19,7 +18,6 @@
     enable = true;
     package = pkgs.llm-agents.claude-code;
     settings = {
-      defaultMode = "acceptEdits";
       language = "chinese";
       attribution = {
         commit = "";
@@ -30,44 +28,6 @@
         DISABLE_INSTALLATION_CHECKS = "1";
         DISABLE_AUTOUPDATER = "1";
         DISABLE_TELEMETRY = "1";
-      };
-      permissions = {
-        allow = [
-          "Bash(gh *)"
-          "Bash(git *)"
-          "WebSearch(*)"
-        ];
-        ask = [
-          "Bash(sudo *)"
-          "Bash(* rm -rf *)"
-          "Bash(* install *)"
-          "Bash(* uninstall *)"
-
-          "Bash(gh * close *)"
-          "Bash(gh * create *)"
-          "Bash(gh * delete *)"
-          "Bash(gh * edit *)"
-          "Bash(gh * lock *)"
-          "Bash(gh * merge *)"
-          "Bash(gh * reopen *)"
-          "Bash(gh * unlock *)"
-          "Bash(gh api -X DELETE *)"
-          "Bash(gh api -X PATCH *)"
-          "Bash(gh api -X POST *)"
-          "Bash(gh api -X PUT *)"
-
-          "Bash(git clean -f *)"
-          "Bash(git merge *)"
-          "Bash(git push *)"
-          "Bash(git rebase *)"
-          "Bash(git reset --hard *)"
-          "Bash(git restore -- *)"
-          "Bash(git tag -d *)"
-        ];
-        deny = [
-          "Read(/run/agenix/**)"
-          "Read(${config.home.homeDirectory}/.zshenv)"
-        ];
       };
       enabledPlugins = {
         "claude-code-setup@claude-plugins-official" = true;
