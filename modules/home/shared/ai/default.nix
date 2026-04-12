@@ -1,16 +1,25 @@
-{ pkgs, flake, ... }:
-let
-  inherit (pkgs.stdenv.hostPlatform) system;
-in
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     bubblewrap
-    playwright
-    playwright-mcp
-    flake.inputs.antigravity-nix.packages.${system}.default
-    llm-agents.gemini-cli
-    llm-agents.codex
-    # llm-agents.openclaw
-    # llm-agents.cli-proxy-api
   ];
+
+  programs.codex = {
+    enable = true;
+    package = pkgs.llm-agents.codex;
+    # enableMcpIntegration = true;
+    # settings = {
+    # analytics.enabled = false;
+    # model = "openai/gpt-oss-120b";
+    # model_provider = "nvidia";
+    # model_providers = {
+    #   nvidia = {
+    #     name = "nvidia";
+    #     baseURL = "https://integrate.api.nvidia.com/v1";
+    #     envKey = "NVIDIA_API_KEY";
+    #   };
+    # };
+    # };
+  };
+
 }

@@ -14,13 +14,21 @@ in
     secrets = {
       "mihomo.yaml".file = self + /secrets/mihomo.yaml.age;
 
+      "github-token" = {
+        file = self + /secrets/github-token.age;
+        mode = "644";
+      };
       "nix-access-tokens" = {
         file = self + /secrets/nix-access-tokens.age;
         mode = "644";
       };
 
-      "github-token" = {
-        file = self + /secrets/github-token.age;
+      "context7-api-key" = {
+        file = self + /secrets/context7-api-key.age;
+        mode = "644";
+      };
+      "tavily-api-key" = {
+        file = self + /secrets/tavily-api-key.age;
         mode = "644";
       };
     };
