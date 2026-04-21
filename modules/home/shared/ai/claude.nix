@@ -44,6 +44,8 @@
         "agent-browser@agent-browser" = true;
         "superpowers@superpowers-dev" = true;
         "voltagent-dev-exp@voltagent-subagents" = true;
+        "andrej-karpathy-skills@karpathy-skills" = true;
+        "caveman@caveman" = true;
       };
       extraKnownMarketplaces = {
         "agent-browser".source = {
@@ -57,6 +59,14 @@
         "voltagent-subagents".source = {
           source = "github";
           repo = "VoltAgent/awesome-claude-code-subagents";
+        };
+        "andrej-karpathy-skills".source = {
+          source = "github";
+          repo = "forrestchang/andrej-karpathy-skills";
+        };
+        "caveman".source = {
+          source = "github";
+          repo = "JuliusBrussee/caveman";
         };
       };
     };
