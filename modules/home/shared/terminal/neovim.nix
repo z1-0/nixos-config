@@ -5,25 +5,28 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    extraLuaPackages =
+      luaPkgs: with luaPkgs; [
+        lua
+        lua-lsp
+        luarocks
+      ];
   };
 
   home.packages = with pkgs; [
     gcc
+    python3
+    tree-sitter
 
     bun
     nodejs
-    prettier
-    tree-sitter
-
-    lua51Packages.lua
-    lua51Packages.lua-lsp
-    lua51Packages.luarocks
-    stylua
 
     nixd
     nixfmt
     statix
 
     markdownlint-cli2
+    prettier
+    stylua
   ];
 }
