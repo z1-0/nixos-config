@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     bubblewrap
+    playwright-driver.browsers
   ];
 
   programs.codex = {
@@ -26,5 +27,10 @@
     enable = true;
     package = pkgs.llm-agents.opencode;
   };
+
+  programs.zsh.envExtra = ''
+    export PLAYWRIGHT_BROWSERS_PATH=${pkgs.playwright-driver.browsers}
+    export PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=true
+  '';
 
 }

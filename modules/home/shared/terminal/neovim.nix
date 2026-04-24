@@ -27,6 +27,7 @@
 
     markdownlint-cli2
     prettier
+    shfmt
     stylua
   ];
 }
