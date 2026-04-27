@@ -21,6 +21,11 @@
       };
     };
 
+    policies = {
+      PasswordManagerEnabled = false;
+      DisableDeveloperTools = true;
+    };
+
     profiles.default = {
       settings = {
         "intl.locale.requested" = "zh-CN,en-US";

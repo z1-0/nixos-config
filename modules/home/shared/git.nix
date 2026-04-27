@@ -5,8 +5,6 @@
   ...
 }:
 {
-  home.packages = [ pkgs.meld ];
-
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -54,7 +52,9 @@
 
   programs.gh.enable = true;
 
-  programs.zsh.envExtra = ''
-    export GH_TOKEN="$(${pkgs.coreutils}/bin/cat ${osConfig.age.secrets."github-token".path})"
-  '';
+  home.packages = [ pkgs.meld ];
+
+  home.sessionVariables = {
+    GH_TOKEN = "$(cat ${osConfig.age.secrets."github-token".path})";
+  };
 }

@@ -1,4 +1,4 @@
-{ pkgs, osConfig, ... }:
+{ osConfig, ... }:
 {
   programs.mcp = {
     enable = true;
@@ -24,15 +24,9 @@
     };
   };
 
-  programs.zsh.envExtra = ''
-    export CONTEXT7_API_KEY="$(${pkgs.coreutils}/bin/cat ${
-      osConfig.age.secrets."context7-api-key".path
-    })"
-
-    export GITHUB_PERSONAL_ACCESS_TOKEN="$(${pkgs.coreutils}/bin/cat ${
-      osConfig.age.secrets."github-token".path
-    })"
-
-    export TAVILY_API_KEY="$(${pkgs.coreutils}/bin/cat ${osConfig.age.secrets."tavily-api-key".path})"
-  '';
+  home.sessionVariables = {
+    CONTEXT7_API_KEY = "$(cat ${osConfig.age.secrets."context7-api-key".path})";
+    GITHUB_PERSONAL_ACCESS_TOKEN = "$(cat ${osConfig.age.secrets."github-token".path})";
+    TAVILY_API_KEY = "$(cat ${osConfig.age.secrets."tavily-api-key".path})";
+  };
 }
