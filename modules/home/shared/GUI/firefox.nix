@@ -13,10 +13,10 @@
       profiles.default = {
         enableAllSections = true;
         settings = {
-          fastfox.enable = true;
+          # fastfox.enable = true;
           peskyfox.enable = true;
           securefox.enable = true;
-          smoothfox.sharpen-scrolling.enable = true;
+          smoothfox."natural-smooth-scrolling-v3".enable = true;
         };
       };
     };

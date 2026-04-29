@@ -17,9 +17,13 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	spec = {
 		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
+		{ import = "lazyvim.plugins.extras.ai.claudecode" },
+		{ import = "lazyvim.plugins.extras.coding.mini-surround" },
 		{ import = "lazyvim.plugins.extras.coding.yanky" },
 		{ import = "lazyvim.plugins.extras.editor.refactoring" },
 		{ import = "lazyvim.plugins.extras.formatting.prettier" },
+		{ import = "lazyvim.plugins.extras.ui.mini-animate" },
+		{ import = "lazyvim.plugins.extras.ui.treesitter-context" },
 		{ import = "lazyvim.plugins.extras.lang.git" },
 		{ import = "lazyvim.plugins.extras.lang.haskell" },
 		{ import = "lazyvim.plugins.extras.lang.json" },
@@ -32,7 +36,6 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lang.typescript" },
 		{ import = "lazyvim.plugins.extras.lang.yaml" },
 		{ import = "lazyvim.plugins.extras.lang.zig" },
-		{ import = "lazyvim.plugins.extras.ui.treesitter-context" },
 		{ import = "plugins" },
 	},
 	defaults = {
