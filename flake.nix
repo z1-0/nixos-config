@@ -44,6 +44,9 @@
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
+    cc-switch.url = "github:dahai9/cc-switch-nix";
+    cc-switch.inputs.nixpkgs.follows = "nixpkgs";
+
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
       inputs.nixpkgs.follows = "nixpkgs";

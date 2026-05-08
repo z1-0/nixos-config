@@ -22,15 +22,6 @@ in
         file = self + /secrets/nix-access-tokens.age;
         mode = "644";
       };
-
-      "context7-api-key" = {
-        file = self + /secrets/context7-api-key.age;
-        mode = "644";
-      };
-      "tavily-api-key" = {
-        file = self + /secrets/tavily-api-key.age;
-        mode = "644";
-      };
     };
   };
 }

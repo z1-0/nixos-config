@@ -8,9 +8,6 @@ genAttrs
     "mihomo.yaml.age"
     "github-token.age"
     "nix-access-tokens.age"
-    "context7-api-key.age"
-    "gemini-api-key.age"
-    "tavily-api-key.age"
   ]
   (_: {
     publicKeys = [
