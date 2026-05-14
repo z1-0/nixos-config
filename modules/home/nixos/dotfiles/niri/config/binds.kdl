@@ -38,9 +38,6 @@ binds {
     Mod+Shift+N repeat=false hotkey-overlay-title="Notepad" {
         spawn "dms" "ipc" "call" "notepad" "toggle"
     }
-    Mod+Shift+Q {
-        quit
-    }
     // === Audio Controls ===
     XF86AudioRaiseVolume allow-when-locked=true {
         spawn "dms" "ipc" "call" "audio" "increment" "5"
