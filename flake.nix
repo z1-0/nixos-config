@@ -70,7 +70,7 @@
     nixos-unified.url = "github:srid/nixos-unified";
     import-tree.url = "github:vic/import-tree";
 
-    octos.url = "git+file:///home/zion/Projects/octos-new";
+    # octos.url = "path:/home/zion/Projects/octos-new";
   };
 
   outputs =

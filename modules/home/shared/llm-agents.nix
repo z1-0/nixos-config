@@ -14,11 +14,13 @@ in
 
   home = {
     packages = with pkgs; [
+      llm-agents.antigravity
       llm-agents.claude-code
+      llm-agents.cc-switch-cli
       llm-agents.codex
       llm-agents.gemini-cli
       llm-agents.opencode
-      cc-switch-fixed
+      # cc-switch-fixed
       bubblewrap
       playwright-driver.browsers
     ];
