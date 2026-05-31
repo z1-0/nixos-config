@@ -14,7 +14,7 @@ in
 
   home = {
     packages = with pkgs; [
-      llm-agents.antigravity
+      llm-agents.antigravity-cli
       llm-agents.claude-code
       llm-agents.cc-switch-cli
       llm-agents.codex
