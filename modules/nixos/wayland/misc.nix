@@ -1,10 +1,11 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    nautilus # File Manager
+    adw-gtk3
+    libnotify
     loupe # Image Viewer
+    nautilus # File Manager
     papers # Document Viewer
     showtime # Video Player
-    adw-gtk3
   ];
 }
