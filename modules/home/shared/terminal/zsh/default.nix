@@ -36,7 +36,7 @@
       {
         name = "zsh-completions";
         src = pkgs.zsh-completions;
-        completions = [ "share/zsh/site-functions" ];
+        functions = [ "share/zsh/site-functions" ];
       }
       {
         name = "fzf-tab";

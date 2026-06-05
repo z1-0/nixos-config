@@ -1,20 +1,16 @@
 {
   flake,
-  pkgs,
   lib,
   ...
 }:
 let
   inherit (flake) inputs;
-  inherit (pkgs.stdenv.hostPlatform) system;
 in
 {
   imports = [ inputs.dms-plugin-registry.modules.default ];
 
   programs.dms-shell = {
     enable = true;
-    package = inputs.dms.packages.${system}.default;
-    quickshell.package = inputs.quickshell.packages.${system}.quickshell;
 
     systemd.enable = true;
     enableAudioWavelength = true;

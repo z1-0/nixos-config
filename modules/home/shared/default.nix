@@ -1,21 +1,7 @@
+{ osConfig, ... }:
 {
-  flake,
-  osConfig,
-  pkgs,
-  ...
-}:
-let
-  inherit (pkgs.stdenv.hostPlatform) system;
-in
-{
-  imports = [
-    flake.inputs.nix-index-database.homeModules.default
-  ];
 
   home = {
-    packages = [
-      # flake.inputs.ah.packages.${system}.default
-    ];
 
     shellAliases = osConfig.environment.shellAliases;
 
@@ -29,6 +15,4 @@ in
     createDirectories = true;
   };
 
-  programs.nix-index.enable = true;
-  programs.nix-index-database.comma.enable = true;
 }
