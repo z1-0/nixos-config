@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   boot = {
     kernelParams = [
       "acpi_osi=Linux"
@@ -8,7 +7,7 @@
       "thunderbolt"
       "usb_storage"
     ];
-    extraModulePackages = [ config.boot.kernelPackages.lenovo-legion-module ];
+    extraModulePackages = [config.boot.kernelPackages.lenovo-legion-module];
   };
 
   fileSystems = {

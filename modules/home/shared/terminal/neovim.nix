@@ -1,12 +1,11 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    extraLuaPackages =
-      luaPkgs: with luaPkgs; [
+    extraLuaPackages = luaPkgs:
+      with luaPkgs; [
         lua
         lua-lsp
         luarocks
@@ -21,6 +20,7 @@
     bun
     nodejs
 
+    alejandra
     nixd
     nixfmt
     statix

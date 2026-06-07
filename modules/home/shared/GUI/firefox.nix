@@ -1,83 +1,40 @@
-{ flake, pkgs, ... }:
-{
-  imports = [ flake.inputs.betterfox.modules.homeManager.betterfox ];
-
+{pkgs, ...}: {
   programs.firefox = {
     enable = true;
-    languagePacks = [
-      "zh-CN"
-      "en-US"
-    ];
-    betterfox = {
-      enable = true;
-      profiles.default = {
-        enableAllSections = true;
-        settings = {
-          # fastfox.enable = true;
-          peskyfox.enable = true;
-          securefox.enable = true;
-          smoothfox."natural-smooth-scrolling-v3".enable = true;
-        };
-      };
-    };
-
+    languagePacks = ["zh-CN" "en-US"];
     policies = {
       PasswordManagerEnabled = false;
       DisableDeveloperTools = true;
     };
-
     profiles.default = {
       settings = {
-        "intl.locale.requested" = "zh-CN,en-US";
         "browser.tabs.insertAfterCurrent" = true;
         "browser.tabs.insertRelatedAfterCurrent" = true;
         "extensions.autoDisableScopes" = 0; # enable all extensions by default
+        "intl.locale.requested" = "zh-CN,en-US";
       };
-      extensions =
-        let
-          # TODO 🚨
-          ignoreVulnerabilities =
-            pkg:
-            pkg.overrideAttrs (oldAttrs: {
-              meta = oldAttrs.meta // {
-                knownVulnerabilities = [ ];
-              };
-            });
-        in
-        {
-          packages = with pkgs.nur.repos.rycee.firefox-addons; [
-            ublock-origin
-            octotree
-            refined-github
-            bitwarden
-            buster-captcha-solver
-            vimium
-            (ignoreVulnerabilities immersive-translate)
-          ];
-        };
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+        bitwarden
+        buster-captcha-solver
+        kiss-translator
+        octotree
+        refined-github
+        ublock-origin
+        vimium
+      ];
       search = {
         force = true;
         default = "google";
         engines = {
           "Github" = {
-            urls = [ { template = "https://github.com/search?q={searchTerms}&type=repositories"; } ];
+            urls = [{template = "https://github.com/search?q={searchTerms}&type=repositories";}];
             iconMapObj."16" = "https://github.com/favicon.ico";
-            definedAliases = [ "gh" ];
+            definedAliases = ["gh"];
           };
           "SourceGraph" = {
-            urls = [ { template = "https://sourcegraph.com/search?q={searchTerms}"; } ];
+            urls = [{template = "https://sourcegraph.com/search?q={searchTerms}";}];
             iconMapObj."16" = "https://sourcegraph.com/favicon.ico";
-            definedAliases = [ "sg" ];
-          };
-          "searchix" = {
-            urls = [ { template = "https://searchix.ovh/?query={searchTerms}"; } ];
-            iconMapObj."16" = "https://searchix.ovh/favicon.ico";
-            definedAliases = [ "no" ]; # nix options
-          };
-          "noogle" = {
-            urls = [ { template = "https://noogle.dev/q?term={searchTerms}"; } ];
-            iconMapObj."16" = "https://noogle.dev/favicon.ico";
-            definedAliases = [ "nf" ]; # nix function
+            definedAliases = ["sg"];
           };
           bing.metaData.alias = "@b";
           google.metaData.alias = "@g";

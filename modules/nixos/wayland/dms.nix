@@ -2,12 +2,10 @@
   flake,
   lib,
   ...
-}:
-let
+}: let
   inherit (flake) inputs;
-in
-{
-  imports = [ inputs.dms-plugin-registry.modules.default ];
+in {
+  imports = [inputs.dms-plugin-registry.nixosModules.default];
 
   programs.dms-shell = {
     enable = true;

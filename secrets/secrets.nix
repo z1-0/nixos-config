@@ -1,13 +1,15 @@
 let
-  nameValuePair = name: value: { inherit name value; };
+  nameValuePair = name: value: {inherit name value;};
   genAttrs' = xs: f: builtins.listToAttrs (map f xs);
   genAttrs = names: f: genAttrs' names (n: nameValuePair n (f n));
 in
-genAttrs
+  genAttrs
   [
-    "mihomo.yaml.age"
+    "context7.age"
     "github-token.age"
+    "mihomo.yaml.age"
     "nix-access-tokens.age"
+    "tavily.age"
   ]
   (_: {
     publicKeys = [

@@ -1,15 +1,16 @@
-{ flake, self, ... }:
-let
+{
+  flake,
+  self,
+  ...
+}: let
   inherit (flake.inputs) import-tree;
   root = flake.self;
-in
-{
-  mkNixos =
-    {
-      hostName,
-      hostPlatform,
-      modules,
-    }:
+in {
+  mkNixos = {
+    hostName,
+    hostPlatform,
+    modules,
+  }:
     self.mkBaseSystem {
       inherit hostName hostPlatform modules;
       osModules = [
@@ -23,12 +24,11 @@ in
       ];
     };
 
-  mkDarwin =
-    {
-      hostName,
-      hostPlatform,
-      modules,
-    }:
+  mkDarwin = {
+    hostName,
+    hostPlatform,
+    modules,
+  }:
     self.mkBaseSystem {
       inherit hostName hostPlatform modules;
       osModules = [
@@ -42,34 +42,30 @@ in
       ];
     };
 
-  mkBaseSystem =
-    {
-      hostName,
-      hostPlatform,
-      modules ? [ ],
-      hmModules ? [ ],
-      osModules ? [ ],
-    }:
-    {
-      networking = { inherit hostName; };
-      nixpkgs = { inherit hostPlatform; };
+  mkBaseSystem = {
+    hostName,
+    hostPlatform,
+    modules ? [],
+    hmModules ? [],
+    osModules ? [],
+  }: {
+    networking = {inherit hostName;};
+    nixpkgs = {inherit hostPlatform;};
 
-      imports =
-        modules
-        ++ osModules
-        ++ [
-          (import-tree (root + /modules/shared))
-          (self.mkHome hmModules)
-        ];
-    };
+    imports =
+      modules
+      ++ osModules
+      ++ [
+        (import-tree (root + /modules/shared))
+        (self.mkHome hmModules)
+      ];
+  };
 
   mkHome = hmModules: {
     home-manager = {
-      users.${root.lib.user.name} =
-        { osConfig, ... }:
-        {
-          home.stateVersion = osConfig.system.stateVersion;
-        };
+      users.${root.lib.user.name} = {osConfig, ...}: {
+        home.stateVersion = osConfig.system.stateVersion;
+      };
       sharedModules = hmModules;
     };
   };

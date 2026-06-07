@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     liberation_ttf
     lxgw-wenkai-screen
@@ -14,7 +13,7 @@
     antialiasing = true;
     hinting = "slight";
     defaultFonts = {
-      emoji = [ "Noto Color Emoji" ];
+      emoji = ["Noto Color Emoji"];
       monospace = [
         "Maple Mono Normal NF CN"
         "Noto Sans Mono CJK SC"

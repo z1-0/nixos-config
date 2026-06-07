@@ -3,8 +3,7 @@
   pkgs,
   osConfig,
   ...
-}:
-{
+}: {
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -52,7 +51,7 @@
 
   programs.gh.enable = true;
 
-  home.packages = [ pkgs.meld ];
+  home.packages = [pkgs.meld];
 
   home.sessionVariables = {
     GH_TOKEN = "$(cat ${osConfig.age.secrets."github-token".path})";

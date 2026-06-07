@@ -7,7 +7,6 @@
   coreutils,
   ...
 }:
-
 writeShellApplication {
   name = "screenshot";
   runtimeInputs = [

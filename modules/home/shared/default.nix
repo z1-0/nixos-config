@@ -1,7 +1,15 @@
-{ osConfig, ... }:
 {
-
+  flake,
+  osConfig,
+  pkgs,
+  ...
+}: let
+  inherit (pkgs.stdenv.hostPlatform) system;
+in {
   home = {
+    packages = [
+      flake.inputs.ah.packages.${system}.default
+    ];
 
     shellAliases = osConfig.environment.shellAliases;
 
@@ -14,5 +22,4 @@
     enable = true;
     createDirectories = true;
   };
-
 }

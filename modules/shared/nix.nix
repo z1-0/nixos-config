@@ -3,11 +3,9 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   inherit (flake) self inputs;
-in
-{
+in {
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -17,7 +15,7 @@ in
   };
 
   nix = {
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
     extraOptions = ''
       !include ${config.age.secrets."nix-access-tokens".path}

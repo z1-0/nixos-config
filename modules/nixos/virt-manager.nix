@@ -1,8 +1,10 @@
-{ flake, pkgs, ... }:
-let
-  inherit (flake) self;
-in
 {
+  flake,
+  pkgs,
+  ...
+}: let
+  inherit (flake) self;
+in {
   programs.virt-manager.enable = true;
 
   services.qemuGuest.enable = true;
@@ -12,7 +14,7 @@ in
     spiceUSBRedirection.enable = true;
     libvirtd = {
       enable = true;
-      qemu.vhostUserPackages = [ pkgs.virtiofsd ];
+      qemu.vhostUserPackages = [pkgs.virtiofsd];
     };
     vmVariant = {
       users.users = {
@@ -24,6 +26,6 @@ in
   };
 
   # exec 'virsh net-autostart default'
-  environment.systemPackages = [ pkgs.dnsmasq ];
-  networking.firewall.trustedInterfaces = [ "virbr0" ];
+  environment.systemPackages = [pkgs.dnsmasq];
+  networking.firewall.trustedInterfaces = ["virbr0"];
 }

@@ -1,32 +1,29 @@
-{ flake, ... }:
-{
+{flake, ...}: {
   config,
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   name = "claude-code-router";
 
-  inherit (lib)
+  inherit
+    (lib)
     mkIf
     mkMerge
     mkEnableOption
     mkPackageOption
     ;
-in
-{
+in {
   options.services.${name} = {
     enable = mkEnableOption name;
-    package = mkPackageOption pkgs name { };
-    enableBashIntegration = lib.hm.shell.mkBashIntegrationOption { inherit config; };
-    enableZshIntegration = lib.hm.shell.mkZshIntegrationOption { inherit config; };
+    package = mkPackageOption pkgs name {};
+    enableBashIntegration = lib.hm.shell.mkBashIntegrationOption {inherit config;};
+    enableZshIntegration = lib.hm.shell.mkZshIntegrationOption {inherit config;};
   };
 
-  config =
-    let
-      cfg = config.services.${name};
-    in
+  config = let
+    cfg = config.services.${name};
+  in
     mkIf cfg.enable (mkMerge [
       {
         home.packages = [
@@ -51,10 +48,10 @@ in
         systemd.user.services.${name} = {
           Unit = {
             Description = "Claude Code Router";
-            After = [ "network-online.target" ];
+            After = ["network-online.target"];
           };
           Install = {
-            WantedBy = [ "default.target" ];
+            WantedBy = ["default.target"];
           };
           Service = {
             Type = "simple";

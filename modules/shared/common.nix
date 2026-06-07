@@ -3,8 +3,7 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: {
   system.stateVersion = lib.versions.majorMinor lib.version;
 
   time.timeZone = "Asia/Shanghai";
@@ -17,5 +16,5 @@
 
   programs.zsh.enable = true;
   users.users.${flake.self.lib.user.name}.shell = pkgs.zsh;
-  environment.pathsToLink = [ "/share/zsh" ];
+  environment.pathsToLink = ["/share/zsh"];
 }

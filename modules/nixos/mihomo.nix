@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   services.mihomo = {
     enable = true;
     tunMode = true;

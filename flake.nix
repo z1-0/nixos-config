@@ -29,14 +29,8 @@
     dms-plugin-registry.url = "github:AvengeMedia/dms-plugin-registry";
     dms-plugin-registry.inputs.nixpkgs.follows = "nixpkgs";
 
-    betterfox.url = "github:HeitorAugustoLN/betterfox-nix";
-    betterfox.inputs.nixpkgs.follows = "nixpkgs";
-
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
-
-    cc-switch.url = "github:dahai9/cc-switch-nix";
-    cc-switch.inputs.nixpkgs.follows = "nixpkgs";
 
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
@@ -44,14 +38,14 @@
       inputs.treefmt-nix.follows = "treefmt-nix";
     };
 
-    # ah = {
-    #   url = "github:z1-0/ah.sh";
-    #   inputs = {
-    #     nixpkgs.follows = "nixpkgs";
-    #     treefmt-nix.follows = "treefmt-nix";
-    #     git-hooks-nix.follows = "git-hooks-nix";
-    #   };
-    # };
+    ah = {
+      url = "github:z1-0/ah.sh";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        treefmt-nix.follows = "treefmt-nix";
+        git-hooks-nix.follows = "git-hooks-nix";
+      };
+    };
 
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
@@ -64,8 +58,7 @@
     # octos.url = "path:/home/zion/Projects/octos-new";
   };
 
-  outputs =
-    inputs:
+  outputs = inputs:
     inputs.nixos-unified.lib.mkFlake {
       inherit inputs;
       root = ./.;

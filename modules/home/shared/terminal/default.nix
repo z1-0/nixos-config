@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home = {
     shell.enableZshIntegration = true;
     shell.enableBashIntegration = false;
@@ -34,7 +33,7 @@
     yazi = {
       enable = true;
       shellWrapperName = "y";
-      package = pkgs.yazi.override { _7zz = pkgs._7zz-rar; }; # Support for RAR extraction
+      package = pkgs.yazi.override {_7zz = pkgs._7zz-rar;}; # Support for RAR extraction
     };
 
     eza = {

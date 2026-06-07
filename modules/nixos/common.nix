@@ -4,11 +4,9 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   inherit (lib) optional;
-in
-{
+in {
   i18n = {
     defaultLocale = "zh_CN.UTF-8";
     inputMethod = {
@@ -47,16 +45,17 @@ in
   users = {
     users.${flake.self.lib.user.name} = {
       isNormalUser = true;
-      extraGroups = [
-        "wheel"
-        "kvm"
-        "audio"
-        "video"
-      ]
-      ++ (optional config.networking.networkmanager.enable "networkmanager")
-      ++ (optional config.services.displayManager.dms-greeter.enable "greeter")
-      ++ (optional config.virtualisation.libvirtd.enable "libvirtd")
-      ++ (optional config.virtualisation.podman.enable "podman");
+      extraGroups =
+        [
+          "wheel"
+          "kvm"
+          "audio"
+          "video"
+        ]
+        ++ (optional config.networking.networkmanager.enable "networkmanager")
+        ++ (optional config.services.displayManager.dms-greeter.enable "greeter")
+        ++ (optional config.virtualisation.libvirtd.enable "libvirtd")
+        ++ (optional config.virtualisation.podman.enable "podman");
     };
   };
 

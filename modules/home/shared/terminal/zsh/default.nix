@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -36,7 +39,7 @@
       {
         name = "zsh-completions";
         src = pkgs.zsh-completions;
-        functions = [ "share/zsh/site-functions" ];
+        functions = ["share/zsh/site-functions"];
       }
       {
         name = "fzf-tab";

@@ -1,9 +1,8 @@
-{ modulesPath, ... }:
-{
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+{modulesPath, ...}: {
+  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
   boot = {
-    kernelModules = [ "kvm-intel" ];
+    kernelModules = ["kvm-intel"];
     loader = {
       systemd-boot.enable = true;
       systemd-boot.configurationLimit = 10;

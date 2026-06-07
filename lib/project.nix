@@ -1,6 +1,6 @@
 {
   formatters = [
-    "nixfmt"
+    "alejandra"
     "prettier"
     "shfmt"
     "stylua"
@@ -18,6 +18,5 @@
     "mixed-line-endings"
     "statix"
     "trim-trailing-whitespace"
-    "typos"
   ];
 }
