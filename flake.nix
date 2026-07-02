@@ -1,14 +1,11 @@
 {
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/0.1";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    home-manager.url = "https://flakehub.com/f/nix-community/home-manager/0.1";
-    # home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-darwin.url = "https://flakehub.com/f/nix-darwin/nix-darwin/0.1";
-    # nix-darwin.url = "github:nix-darwin/nix-darwin";
+    nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
@@ -54,11 +51,10 @@
 
     nixos-unified.url = "github:srid/nixos-unified";
     import-tree.url = "github:vic/import-tree";
-
-    # octos.url = "path:/home/zion/Projects/octos-new";
   };
 
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.nixos-unified.lib.mkFlake {
       inherit inputs;
       root = ./.;

@@ -1,9 +1,9 @@
 let
-  nameValuePair = name: value: {inherit name value;};
+  nameValuePair = name: value: { inherit name value; };
   genAttrs' = xs: f: builtins.listToAttrs (map f xs);
   genAttrs = names: f: genAttrs' names (n: nameValuePair n (f n));
 in
-  genAttrs
+genAttrs
   [
     "context7.age"
     "github-token.age"
