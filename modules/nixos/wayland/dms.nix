@@ -2,10 +2,12 @@
   flake,
   lib,
   ...
-}: let
+}:
+let
   inherit (flake) inputs;
-in {
-  imports = [inputs.dms-plugin-registry.nixosModules.default];
+in
+{
+  imports = [ inputs.dms-plugin-registry.nixosModules.default ];
 
   programs.dms-shell = {
     enable = true;
@@ -20,7 +22,7 @@ in {
 
     plugins = {
       commandRunner.enable = true;
-      dankBatteryAlerts.enable = true;
+      # dankBatteryAlerts.enable = true;
       dankHooks.enable = true;
       dockerManager.enable = true;
       niriWindows.enable = true;

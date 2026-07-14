@@ -3,28 +3,27 @@
   flake,
   osConfig,
   ...
-}: let
+}:
+let
   inherit (pkgs.stdenv.hostPlatform) system;
-in {
-  imports = [flake.self.lib.modules.claude-code-router];
-
-  services.claude-code-router.enable = false;
-  services.claude-code-router.package = pkgs.llm-agents.claude-code-router;
-
+  llm-agents = flake.inputs.llm-agents.packages.${system};
+in
+{
   home = {
-    packages = with pkgs; [
-      llm-agents.antigravity-cli
-      llm-agents.cc-switch-cli
-      llm-agents.claude-code
-      llm-agents.opencode
-      llm-agents.skills
-
-      ctx7
-      flake.self.packages.${system}.tavily-cli
-
-      bubblewrap
-      playwright-driver.browsers
-    ];
+    packages =
+      with llm-agents;
+      with pkgs;
+      [
+        antigravity-cli
+        bubblewrap
+        cc-switch-cli
+        claude-code
+        ctx7
+        flake.self.packages.${system}.tavily-cli
+        opencode
+        playwright-driver.browsers
+        skills
+      ];
 
     shellAliases."c" = "claude";
 

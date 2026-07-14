@@ -1,7 +1,8 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home.packages = with pkgs; [
-    wechat
+    brave
     telegram-desktop
+    wechat
   ];
 
   programs.obsidian = {
