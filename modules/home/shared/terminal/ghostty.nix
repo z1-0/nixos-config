@@ -1,7 +1,7 @@
 {
   programs.ghostty = {
     enable = true;
-    clearDefaultKeybinds = true;
+    # clearDefaultKeybinds = true;
     settings = {
       copy-on-select = false;
       mouse-hide-while-typing = true;
