@@ -1,12 +1,14 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.tmux = {
     enable = true;
-    sensibleOnTop = true;
+    baseIndex = 1;
     clock24 = true;
+    keyMode = "vi";
     mouse = true;
     newSession = true;
     secureSocket = false;
-    baseIndex = 1;
+    sensibleOnTop = true;
     shortcut = "a";
 
     plugins = with pkgs.tmuxPlugins; [
