@@ -6,24 +6,20 @@
 }:
 let
   inherit (pkgs.stdenv.hostPlatform) system;
-  llm-agents = flake.inputs.llm-agents.packages.${system};
 in
 {
   home = {
-    packages =
-      with llm-agents;
-      with pkgs;
-      [
-        antigravity-cli
-        bubblewrap
-        cc-switch-cli
-        claude-code
-        ctx7
-        flake.self.packages.${system}.tavily-cli
-        opencode
-        playwright-driver.browsers
-        skills
-      ];
+    packages = with pkgs; [
+      antigravity-cli
+      bubblewrap
+      cc-switch
+      claude-code
+      ctx7
+      flake.self.packages.${system}.tavily-cli
+      opencode
+      playwright-driver.browsers
+      skills
+    ];
 
     shellAliases."c" = "claude";
 
