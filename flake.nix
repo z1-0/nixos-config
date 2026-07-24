@@ -45,6 +45,7 @@
 
     nixos-unified.url = "github:srid/nixos-unified";
     import-tree.url = "github:vic/import-tree";
+    skills.url = "github:z1-0/skills-nix";
   };
 
   outputs =

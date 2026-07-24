@@ -404,7 +404,23 @@
         "nixos-unified": "nixos-unified",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
+        "skills": "skills",
         "treefmt-nix": "treefmt-nix"
+      }
+    },
+    "skills": {
+      "locked": {
+        "lastModified": 1784952651,
+        "narHash": "sha256-b+XyuvnmKMsDBbjywrTwCapqVBWUXfFlcT1y/4p+qLg=",
+        "owner": "z1-0",
+        "repo": "skills-nix",
+        "rev": "23e2b029e0f9e49d662800cec617e95498a0b0fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "z1-0",
+        "repo": "skills-nix",
+        "type": "github"
       }
     },
     "systems": {

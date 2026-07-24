@@ -8,6 +8,34 @@ let
   inherit (pkgs.stdenv.hostPlatform) system;
 in
 {
+
+  imports = [
+    flake.inputs.skills.homeModules.default
+  ];
+
+  skills = {
+    enable = true;
+    install = [
+      "blader/humanizer"
+      "cocoon-ai/architecture-diagram-generator"
+      "dietrichgebert/ponytail"
+      "forrestchang/andrej-karpathy-skills"
+      "hardikpandya/stop-slop"
+      "imbad0202/academic-research-skills"
+      "jeffallan/claude-skills"
+      "juliusbrussee/caveman"
+      "leonxlnx/taste-skill"
+      "mattpocock/skills"
+      "mvanhorn/last30days-skill"
+      "tavily-ai/skills"
+      "upstash/context7"
+      "vercel-labs/skills"
+      "github/awesome-copilot@create-readme"
+      # "orchestra-research/ai-research-skills"
+    ];
+    symlink.enable = true;
+  };
+
   home = {
     packages = with pkgs; [
       antigravity-cli
