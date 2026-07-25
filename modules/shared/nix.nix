@@ -38,7 +38,7 @@ in
 
       extra-trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "z1-0.cachix.org-1:e4TgPqNGXlI7xxs73HxTE65qUjmWaPxwnJX2Qk4Ng5U="
+        "z1-0.cachix.org-1:FS7lPgL0StRBOPrlu0RgdCL7LafUI23+U6Iivdw5QK8="
       ];
 
       trusted-users = [
