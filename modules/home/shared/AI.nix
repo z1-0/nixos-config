@@ -15,6 +15,7 @@ in
 
   skills = {
     enable = true;
+    enableAgentSymlinks = true;
     install = [
       "blader/humanizer"
       "cocoon-ai/architecture-diagram-generator"
@@ -27,13 +28,12 @@ in
       "leonxlnx/taste-skill"
       "mattpocock/skills"
       "mvanhorn/last30days-skill"
+      "orchestra-research/ai-research-skills"
       "tavily-ai/skills"
       "upstash/context7"
       "vercel-labs/skills"
       "github/awesome-copilot@create-readme"
-      # "orchestra-research/ai-research-skills"
     ];
-    symlink.enable = true;
   };
 
   home = {
