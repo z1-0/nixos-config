@@ -4,14 +4,18 @@
   osConfig,
   ...
 }:
+
 let
   inherit (pkgs.stdenv.hostPlatform) system;
 in
-{
 
+{
   imports = [
     flake.inputs.skills.homeModules.default
+    flake.self.lib.modules.prompts
   ];
+
+  prompts.source = ./AGENTS.md;
 
   skills = {
     enable = true;
