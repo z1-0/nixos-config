@@ -29,15 +29,6 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 
-    ah = {
-      url = "github:z1-0/ah.sh";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "treefmt-nix";
-        git-hooks-nix.follows = "git-hooks-nix";
-      };
-    };
-
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
       flake = false;
@@ -45,6 +36,7 @@
 
     nixos-unified.url = "github:srid/nixos-unified";
     import-tree.url = "github:vic/import-tree";
+    ah.url = "github:z1-0/ah.sh";
     skills.url = "github:z1-0/skills-nix";
   };
 
