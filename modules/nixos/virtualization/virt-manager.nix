@@ -9,10 +9,14 @@ in
 {
   programs.virt-manager.enable = true;
 
-  environment.systemPackages = [
-    pkgs.dnsmasq # exec 'virsh net-autostart default'
-    pkgs.virt-viewer
-  ];
+  environment = {
+    shellAliases.win = "virt-viewer -c qemu:///system -f -w win & virsh -c qemu:///system start win";
+
+    systemPackages = [
+      pkgs.dnsmasq # exec 'virsh net-autostart default'
+      pkgs.virt-viewer
+    ];
+  };
 
   virtualisation = {
     spiceUSBRedirection.enable = true;

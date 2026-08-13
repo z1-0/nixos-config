@@ -1,11 +1,23 @@
-{ pkgs, ... }: {
+{
+  lib,
+  osConfig,
+  pkgs,
+  ...
+}:
+{
   home = {
     shell.enableZshIntegration = true;
     shell.enableBashIntegration = false;
 
     shellAliases = {
       cat = "bat";
-    };
+    }
+    # Remove built-in l/ll/ls aliases to prevent them from shadowing eza.
+    // lib.removeAttrs osConfig.environment.shellAliases [
+      "l"
+      "ll"
+      "ls"
+    ];
 
     packages = with pkgs; [
       bat
@@ -15,6 +27,7 @@
       imagemagick
       jq
       lazyjournal
+      libarchive
       poppler-utils
       resvg
       ripgrep
@@ -23,7 +36,6 @@
   };
 
   programs = {
-    fzf.enable = true;
     zoxide.enable = true;
 
     direnv = {
@@ -31,16 +43,22 @@
       nix-direnv.enable = true;
     };
 
-    yazi = {
-      enable = true;
-      shellWrapperName = "y";
-      package = pkgs.yazi.override { _7zz = pkgs._7zz-rar; }; # Support for RAR extraction
-    };
-
     eza = {
       enable = true;
       colors = "auto";
       git = true;
     };
+
+    fzf = {
+      enable = true;
+      tmux.enableShellIntegration = true;
+    };
+
+    yazi = {
+      enable = true;
+      shellWrapperName = "y";
+      package = pkgs.yazi.override { _7zz = pkgs._7zz-rar; }; # Support for RAR extraction
+    };
   };
+
 }

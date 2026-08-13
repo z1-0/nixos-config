@@ -34,7 +34,7 @@ in
   services.upower.enable = true;
 
   environment = {
-    shellAliases = lib.mkForce {
+    shellAliases = {
       copy = "dms clipboard copy";
       paste = "dms clipboard paste";
     };

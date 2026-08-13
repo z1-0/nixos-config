@@ -1,17 +1,16 @@
 {
   flake,
-  osConfig,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (pkgs.stdenv.hostPlatform) system;
-in {
+in
+{
   home = {
     packages = [
       flake.inputs.ah.packages.${system}.default
     ];
-
-    shellAliases = osConfig.environment.shellAliases;
 
     sessionPath = [
       "$HOME/.local/bin"
