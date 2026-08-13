@@ -1,7 +1,11 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.firefox = {
     enable = true;
-    languagePacks = ["zh-CN" "en-US"];
+    languagePacks = [
+      "zh-CN"
+      "en-US"
+    ];
     policies = {
       PasswordManagerEnabled = false;
       DisableDeveloperTools = true;
@@ -19,6 +23,7 @@
         kiss-translator
         octotree
         refined-github
+        tampermonkey
         ublock-origin
         vimium
       ];
@@ -27,14 +32,14 @@
         default = "google";
         engines = {
           "Github" = {
-            urls = [{template = "https://github.com/search?q={searchTerms}&type=repositories";}];
+            urls = [ { template = "https://github.com/search?q={searchTerms}&type=repositories"; } ];
             iconMapObj."16" = "https://github.com/favicon.ico";
-            definedAliases = ["gh"];
+            definedAliases = [ "gh" ];
           };
           "SourceGraph" = {
-            urls = [{template = "https://sourcegraph.com/search?q={searchTerms}";}];
+            urls = [ { template = "https://sourcegraph.com/search?q={searchTerms}"; } ];
             iconMapObj."16" = "https://sourcegraph.com/favicon.ico";
-            definedAliases = ["sg"];
+            definedAliases = [ "sg" ];
           };
           bing.metaData.alias = "@b";
           google.metaData.alias = "@g";
