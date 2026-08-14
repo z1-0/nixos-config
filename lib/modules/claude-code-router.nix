@@ -65,7 +65,7 @@ in
         };
       })
 
-      (mkIf pkgs.stdenv.isDarwin {
+      (mkIf pkgs.stdenv.hostPlatform.isDarwin {
         launchd.agents.${name} = {
           enable = true;
           config = {

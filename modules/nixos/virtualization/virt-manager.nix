@@ -10,7 +10,7 @@ in
   programs.virt-manager.enable = true;
 
   environment = {
-    shellAliases.win = "virt-viewer -c qemu:///system -f -w win & virsh -c qemu:///system start win";
+    shellAliases.win = "virsh -c qemu:///system start win && virt-viewer -c qemu:///system -f -w win";
 
     systemPackages = [
       pkgs.dnsmasq # exec 'virsh net-autostart default'
