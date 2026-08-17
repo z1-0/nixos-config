@@ -23,9 +23,7 @@
         kiss-translator
         octotree
         refined-github
-        tampermonkey
         ublock-origin
-        vimium
       ];
       search = {
         force = true;
