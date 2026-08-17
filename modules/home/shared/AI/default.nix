@@ -24,7 +24,7 @@ in
       "blader/humanizer"
       "cocoon-ai/architecture-diagram-generator"
       "dietrichgebert/ponytail"
-      "forrestchang/andrej-karpathy-skills"
+      "multica-ai/andrej-karpathy-skills"
       "hardikpandya/stop-slop"
       "imbad0202/academic-research-skills"
       "jeffallan/claude-skills"
