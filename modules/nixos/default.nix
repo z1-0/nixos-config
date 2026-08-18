@@ -1,10 +1,15 @@
 {
-  programs.nix-ld.enable = true;
-
   programs = {
+    nix-ld.enable = true;
+
     appimage = {
-      enable = true;
       binfmt = true;
+      enable = true;
+    };
+
+    localsend = {
+      enable = true;
+      openFirewall = true;
     };
   };
 }
