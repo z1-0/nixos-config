@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home.packages = with pkgs; [
     liberation_ttf
     lxgw-wenkai-screen
@@ -12,19 +12,20 @@
     enable = true;
     antialiasing = true;
     hinting = "slight";
+    subpixelRendering = "rgb";
     defaultFonts = {
-      emoji = ["Noto Color Emoji"];
+      emoji = [ "Noto Color Emoji" ];
       monospace = [
         "Maple Mono Normal NF CN"
         "Noto Sans Mono CJK SC"
       ];
       sansSerif = [
-        "Noto Sans CJK SC"
         "LXGW WenKai Screen"
+        "Noto Sans CJK SC"
       ];
       serif = [
-        "Noto Serif CJK SC"
         "LXGW WenKai Screen"
+        "Noto Serif CJK SC"
       ];
     };
   };
