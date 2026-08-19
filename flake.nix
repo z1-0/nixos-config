@@ -36,8 +36,13 @@
 
     nixos-unified.url = "github:srid/nixos-unified";
     import-tree.url = "github:vic/import-tree";
+
     ah.url = "github:z1-0/ah.sh";
     skills.url = "github:z1-0/skills-nix";
+    tdx = {
+      url = "github:z1-0/tdx-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

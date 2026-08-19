@@ -453,6 +453,7 @@
         "nixpkgs": "nixpkgs_2",
         "nur": "nur",
         "skills": "skills",
+        "tdx": "tdx",
         "treefmt-nix": "treefmt-nix_2"
       }
     },
@@ -499,6 +500,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tdx": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1787170383,
+        "narHash": "sha256-mLC/PEhX4N2V1m3eupkHJmRzEkRAp8aspwNMBrLYsGc=",
+        "owner": "z1-0",
+        "repo": "tdx-flake",
+        "rev": "8fd47d6381f9d049d35e910a3e653c12464d4482",
+        "type": "github"
+      },
+      "original": {
+        "owner": "z1-0",
+        "repo": "tdx-flake",
         "type": "github"
       }
     },
