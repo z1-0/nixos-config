@@ -54,6 +54,7 @@ in
     ];
 
     shellAliases."c" = "claude";
+    shellAliases."oc" = "opencode";
 
     sessionVariables = {
       CONTEXT7_API_KEY = "$(cat ${osConfig.age.secrets."context7".path})";
