@@ -3,6 +3,7 @@
     brave
     telegram-desktop
     wechat
+    libreoffice
   ];
 
   programs.obsidian = {
