@@ -37,6 +37,10 @@ in
       "upstash/context7"
       "vercel-labs/skills"
       "github/awesome-copilot@create-readme"
+      # "jesseovo/last30days-skill-cn"
+      "conorbronsdon/avoid-ai-writing"
+      # "mrgediao/shuorenhua"
+      # "lifelonglazylearner/qu-ai-wei"
     ];
   };
 
