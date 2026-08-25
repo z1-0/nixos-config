@@ -23,33 +23,30 @@ in
     install = [
       "blader/humanizer"
       "cocoon-ai/architecture-diagram-generator"
+      "conorbronsdon/avoid-ai-writing"
       "dietrichgebert/ponytail"
-      "multica-ai/andrej-karpathy-skills"
+      "github/awesome-copilot@create-readme"
       "hardikpandya/stop-slop"
       "imbad0202/academic-research-skills"
       "jeffallan/claude-skills"
       "juliusbrussee/caveman"
       "leonxlnx/taste-skill"
+      "lifelonglazylearner/qu-ai-wei"
       "mattpocock/skills"
+      "mrgediao/shuorenhua"
+      "multica-ai/andrej-karpathy-skills"
       "mvanhorn/last30days-skill"
       "orchestra-research/ai-research-skills"
+      "redfox-data/redfox-community"
       "tavily-ai/skills"
       "upstash/context7"
       "vercel-labs/skills"
-      "github/awesome-copilot@create-readme"
-      # "jesseovo/last30days-skill-cn"
-      "conorbronsdon/avoid-ai-writing"
-      # "mrgediao/shuorenhua"
-      # "lifelonglazylearner/qu-ai-wei"
     ];
   };
 
   home = {
     packages = with pkgs; [
-      antigravity-cli
       bubblewrap
-      cc-switch
-      claude-code
       ctx7
       flake.self.packages.${system}.tavily-cli
       opencode
@@ -57,7 +54,6 @@ in
       skills
     ];
 
-    shellAliases."c" = "claude";
     shellAliases."oc" = "opencode";
 
     sessionVariables = {
