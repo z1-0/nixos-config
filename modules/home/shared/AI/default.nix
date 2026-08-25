@@ -25,6 +25,7 @@ in
       "cocoon-ai/architecture-diagram-generator"
       "conorbronsdon/avoid-ai-writing"
       "dietrichgebert/ponytail"
+      "firecrawl/skills"
       "github/awesome-copilot@create-readme"
       "hardikpandya/stop-slop"
       "imbad0202/academic-research-skills"
@@ -48,6 +49,7 @@ in
     packages = with pkgs; [
       bubblewrap
       ctx7
+      firecrawl-cli
       flake.self.packages.${system}.tavily-cli
       opencode
       playwright-driver.browsers
@@ -58,6 +60,7 @@ in
 
     sessionVariables = {
       CONTEXT7_API_KEY = "$(cat ${osConfig.age.secrets."context7".path})";
+      FIRECRAWL_API_KEY = "$(cat ${osConfig.age.secrets."firecrawl".path})";
       TAVILY_API_KEY = "$(cat ${osConfig.age.secrets."tavily".path})";
 
       PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
