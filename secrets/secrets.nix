@@ -6,6 +6,7 @@ in
 genAttrs
   [
     "context7.age"
+    "firecrawl.age"
     "github-token.age"
     "mihomo.yaml.age"
     "nix-access-tokens.age"
