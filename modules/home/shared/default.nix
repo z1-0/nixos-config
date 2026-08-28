@@ -13,7 +13,8 @@ in
     ];
 
     sessionPath = [
-      "$HOME/.local/bin"
+      "$HOME/.bun/bin"
+      "$HOME/.cache/npm/global/bin"
     ];
   };
 
