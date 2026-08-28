@@ -13,11 +13,11 @@ in
 
     sessionVariables.OSINFO_SYSTEM_DIR = "${pkgs.osinfo-db}/share/osinfo";
 
-    systemPackages = [
-      pkgs.dnsmasq # exec 'virsh net-autostart default'
-      pkgs.libosinfo
-      pkgs.osinfo-db
-      pkgs.virt-viewer
+    systemPackages = with pkgs; [
+      dnsmasq # exec 'virsh net-autostart default'
+      libosinfo
+      osinfo-db
+      virt-viewer
     ];
   };
 
