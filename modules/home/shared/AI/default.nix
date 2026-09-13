@@ -23,7 +23,7 @@ in
     install = [
       "blader/humanizer"
       "cocoon-ai/architecture-diagram-generator"
-      "conorbronsdon/avoid-ai-writing"
+      # "conorbronsdon/avoid-ai-writing"
       "dietrichgebert/ponytail"
       "firecrawl/skills"
       "github/awesome-copilot@create-readme"
