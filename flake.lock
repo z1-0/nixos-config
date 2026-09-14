@@ -454,7 +454,8 @@
         "nur": "nur",
         "skills": "skills",
         "tdx": "tdx",
-        "treefmt-nix": "treefmt-nix_2"
+        "treefmt-nix": "treefmt-nix_2",
+        "workbuddy": "workbuddy"
       }
     },
     "skills": {
@@ -561,6 +562,26 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "workbuddy": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789140325,
+        "narHash": "sha256-lWztXF5kwtx5wH6MlaBA8tOzuR+eU6Q/IRzn5zI9sLQ=",
+        "owner": "YeFaDa",
+        "repo": "workbuddy-nix",
+        "rev": "2c7f3e4e03833c801a148337022b9bb66287df59",
+        "type": "github"
+      },
+      "original": {
+        "owner": "YeFaDa",
+        "repo": "workbuddy-nix",
         "type": "github"
       }
     }

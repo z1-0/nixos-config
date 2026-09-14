@@ -39,10 +39,12 @@
 
     ah.url = "github:z1-0/ah.sh";
     skills.url = "github:z1-0/skills-nix";
-    tdx = {
-      url = "github:z1-0/tdx-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
+    workbuddy.url = "github:YeFaDa/workbuddy-nix";
+    workbuddy.inputs.nixpkgs.follows = "nixpkgs";
+
+    tdx.url = "github:z1-0/tdx-flake";
+    tdx.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

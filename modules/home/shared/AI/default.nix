@@ -50,6 +50,7 @@ in
       bubblewrap
       ctx7
       firecrawl-cli
+      flake.inputs.workbuddy.packages.${system}.default
       flake.self.packages.${system}.tavily-cli
       opencode
       playwright-driver.browsers
