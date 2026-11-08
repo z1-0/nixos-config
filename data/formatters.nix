@@ -1,0 +1,6 @@
+[
+  "nixfmt"
+  "prettier"
+  "shfmt"
+  "stylua"
+]

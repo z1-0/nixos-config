@@ -1,0 +1,43 @@
+{
+  inputs,
+  pkgs,
+  ...
+}:
+let
+  inherit (inputs) self;
+  inherit (pkgs.stdenv.hostPlatform) system;
+  pkgs-agenix = inputs.agenix.packages.${system}.default;
+in
+{
+  imports = [ inputs.agenix.nixosModules.default ];
+
+  environment.systemPackages = [ pkgs-agenix ];
+
+  age = {
+    identityPaths = [ self.lib.rootTree.data.profile.content.sshPrivKey ];
+    secrets = {
+      "mihomo.yaml".file = self + /secrets/mihomo.yaml.age;
+
+      "context7" = {
+        file = self + /secrets/context7.age;
+        mode = "644";
+      };
+      "firecrawl" = {
+        file = self + /secrets/firecrawl.age;
+        mode = "644";
+      };
+      "github-token" = {
+        file = self + /secrets/github-token.age;
+        mode = "644";
+      };
+      "nix-access-tokens" = {
+        file = self + /secrets/nix-access-tokens.age;
+        mode = "644";
+      };
+      "tavily" = {
+        file = self + /secrets/tavily.age;
+        mode = "644";
+      };
+    };
+  };
+}

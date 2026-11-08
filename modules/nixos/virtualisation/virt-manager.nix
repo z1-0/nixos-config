@@ -1,0 +1,31 @@
+{ inputs, pkgs, ... }:
+let
+  username = inputs.self.lib.rootTree.data.profile.content.name;
+in
+{
+  networking.firewall.trustedInterfaces = [ "virbr0" ];
+  users.groups.libvirtd.members = [ username ];
+
+  programs.virt-manager.enable = true;
+
+  environment = {
+    shellAliases.win = "virsh -c qemu:///system start win && virt-viewer -c qemu:///system -f -w win";
+
+    sessionVariables.OSINFO_SYSTEM_DIR = "${pkgs.osinfo-db}/share/osinfo";
+
+    systemPackages = with pkgs; [
+      dnsmasq # exec 'virsh net-autostart default'
+      libosinfo
+      osinfo-db
+      virt-viewer
+    ];
+  };
+
+  virtualisation = {
+    spiceUSBRedirection.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu.vhostUserPackages = [ pkgs.virtiofsd ];
+    };
+  };
+}

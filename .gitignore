@@ -1,0 +1,9 @@
+.direnv/
+.devenv/
+.pre-commit-config.yaml
+
+.workbuddy
+
+result/
+
+*.qcow2
