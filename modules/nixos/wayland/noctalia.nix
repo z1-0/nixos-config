@@ -9,7 +9,7 @@ in
     recommendedServices.enable = true;
   };
 
-  # systemd.user.tmpfiles.users.${username}.rules = [
-  #   "L '${home}/.config/noctalia/config.toml' - - - - ${./noctalia.toml}"
-  # ];
+  systemd.user.tmpfiles.users.${username}.rules = [
+    "L '${home}/.config/noctalia/config.toml' - - - - ${./noctalia.toml}"
+  ];
 }
