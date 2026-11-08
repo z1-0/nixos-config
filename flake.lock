@@ -266,6 +266,26 @@
         "type": "github"
       }
     },
+    "magpie": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794088287,
+        "narHash": "sha256-lZgDlbkmKldweMUEzio6UA4eSSs563vxvRMNMFCGLyA=",
+        "owner": "xuanyayi",
+        "repo": "magpie-flake",
+        "rev": "8137ad984072530ec9754438d4ba1e07cf2cbd7a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "xuanyayi",
+        "repo": "magpie-flake",
+        "type": "github"
+      }
+    },
     "metatree": {
       "inputs": {
         "nix-meta": "nix-meta",
@@ -476,6 +496,7 @@
         "ah": "ah",
         "git-hooks-nix": "git-hooks-nix_2",
         "home-manager": "home-manager",
+        "magpie": "magpie",
         "nix-darwin": "nix-darwin",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_5",

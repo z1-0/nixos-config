@@ -21,6 +21,9 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    magpie.url = "github:xuanyayi/magpie-flake";
+    magpie.inputs.nixpkgs.follows = "nixpkgs";
+
     ah.url = "github:z1-0/ah.sh";
     skills.url = "github:z1-0/skills-nix";
     _.url = "github:z1-0/sylvan";
