@@ -30,6 +30,7 @@
     prettier
     shfmt
     stylua
+    taplo
   ];
 
   xdg.configFile."nvim" = {
