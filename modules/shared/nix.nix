@@ -20,7 +20,7 @@
 
     settings = {
       accept-flake-config = true;
-
+      commit-lock-file-summary = "chore: update flake.lock";
       max-jobs = "auto";
 
       experimental-features = [
