@@ -5,7 +5,6 @@
   "check-yaml"
   "editorconfig-checker"
   "fix-byte-order-marker"
-  "flake-checker"
   "markdownlint"
   "mixed-line-endings"
   "statix"
