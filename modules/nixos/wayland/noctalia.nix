@@ -10,6 +10,6 @@ in
   };
 
   systemd.user.tmpfiles.users.${username}.rules = [
-    "L '${home}/.config/noctalia/config.toml' - - - - ${./noctalia.toml}"
+    "L+ '${home}/.config/noctalia/config.toml' - - - - ${./noctalia.toml}"
   ];
 }
