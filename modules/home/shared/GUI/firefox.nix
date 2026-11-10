@@ -21,8 +21,6 @@
         bitwarden
         buster-captcha-solver
         kiss-translator
-        octotree
-        refined-github
         ublock-origin
       ];
       search = {
