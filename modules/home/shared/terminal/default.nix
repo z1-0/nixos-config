@@ -27,11 +27,24 @@
       imagemagick
       jq
       lazyjournal
-      libarchive
       poppler-utils
       resvg
       ripgrep
       translate-shell
+
+      atool
+      # atool backends; atool itself only dispatches to these.
+      bzip2
+      cpio
+      gnutar
+      gzip
+      lhasa
+      lzop
+      p7zip
+      rar
+      unzip
+      xz
+      zip
     ];
   };
 
