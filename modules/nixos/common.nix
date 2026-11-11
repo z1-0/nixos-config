@@ -1,21 +1,9 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 let
   username = inputs.self.lib.rootTree.data.profile.content.name;
 in
 {
-  i18n = {
-    defaultLocale = "zh_CN.UTF-8";
-    inputMethod = {
-      enable = true;
-      type = "fcitx5";
-      fcitx5 = {
-        addons = with pkgs; [
-          qt6Packages.fcitx5-chinese-addons
-          fcitx5-gtk
-        ];
-      };
-    };
-  };
+  i18n.defaultLocale = "zh_CN.UTF-8";
 
   networking = {
     dhcpcd.enable = false;
