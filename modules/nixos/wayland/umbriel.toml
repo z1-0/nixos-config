@@ -179,6 +179,8 @@ numlock_toggle = true
 
 # Applications and session
 "Mod+Return" = { action = "spawn ghostty", repeat = false }
+# Drop-down Ghostty; the quick terminal itself is configured in ghostty.nix.
+"Mod+Shift+Return" = { action = "spawn ghostty +toggle-quick-terminal", repeat = false }
 "Mod" = "spawn noctalia msg panel-toggle launcher"
 "Mod+Q" = { action = "window-close", repeat = false }
 "Mod+Escape" = "session-quit"
