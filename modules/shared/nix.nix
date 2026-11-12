@@ -14,6 +14,13 @@
   };
 
   nix = {
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 30d";
+    };
+
+    optimise.automatic = true;
+
     extraOptions = ''
       !include ${config.age.secrets."nix-access-tokens".path}
     '';
