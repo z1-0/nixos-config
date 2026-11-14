@@ -1,5 +1,7 @@
 [shell]
 polkit_agent = true
+umbriel_overview_close_on_launch_enabled = true
+umbriel_overview_type_to_launch_enabled = false
 clipboard_history_max_entries = 2000
 clipboard_image_action_command = "noctalia msg annotate {path}"
 lang = "zh_CN"
@@ -70,12 +72,12 @@ auto_locate = true
 
 [idle.behavior.lock]
 enabled = true
-timeout = 300
+timeout = 600
 action = "lock"
 
 [idle.behavior.screen-off]
 enabled = true
-timeout = 360
+timeout = 660
 action = "screen_off"
 
 [idle.behavior.suspend]
@@ -84,5 +86,5 @@ timeout = 900
 action = "lock_and_suspend"
 
 [theme.templates]
-builtin_ids = []
-community_ids = []
+enable_builtin_templates = false
+enable_community_templates = false
