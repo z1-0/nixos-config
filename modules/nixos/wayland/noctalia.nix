@@ -1,15 +1,15 @@
-{ config, inputs, ... }:
+{ inputs, lib, ... }:
 let
   username = inputs.self.lib.rootTree.data.profile.content.name;
-  home = config.users.users.${username}.home;
 in
 {
+  home-manager.users.${username}.programs.noctalia = {
+    enable = true;
+    settings = lib.importTOML ./noctalia.toml;
+  };
+
   programs.noctalia = {
     enable = true;
     recommendedServices.enable = true;
   };
-
-  systemd.user.tmpfiles.users.${username}.rules = [
-    "L+ '${home}/.config/noctalia/config.toml' - - - - ${./noctalia.toml}"
-  ];
 }

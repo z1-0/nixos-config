@@ -5,6 +5,8 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    sideloadInitLua = true;
+
     extraLuaPackages =
       luaPkgs: with luaPkgs; [
         lua

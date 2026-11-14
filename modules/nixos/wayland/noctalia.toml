@@ -34,12 +34,6 @@ enabled = true
 blur_intensity = 0.6
 tint_intensity = 0.2
 
-[notification]
-background_opacity = 0.9
-
-[osd]
-background_opacity = 0.9
-
 [lockscreen]
 blurred_desktop = true
 blur_intensity = 0.7
@@ -89,5 +83,6 @@ enabled = true
 timeout = 900
 action = "lock_and_suspend"
 
-[bar.default]
-background_opacity = 0.9
+[theme.templates]
+builtin_ids = []
+community_ids = []
