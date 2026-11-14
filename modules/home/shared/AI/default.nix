@@ -31,7 +31,6 @@ in
       "juliusbrussee/caveman"
       "leonxlnx/taste-skill"
       "lifelonglazylearner/qu-ai-wei"
-      "mattpocock/skills"
       "mrgediao/shuorenhua"
       "multica-ai/andrej-karpathy-skills"
       "mvanhorn/last30days-skill"
