@@ -23,7 +23,6 @@
     bun
     nodejs
 
-    alejandra
     nixd
     nixfmt
     statix
