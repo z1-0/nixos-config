@@ -229,16 +229,16 @@ hide_when_typing = true
 "Mod+Return" = { action = "spawn ghostty", repeat = false }
 "Mod+Shift+Return" = { action = "spawn ghostty +toggle-quick-terminal", repeat = false }
 "Mod" = "spawn noctalia msg panel-toggle launcher"
-"Mod+Shift+C" = { action = "spawn noctalia msg panel-toggle control-center", repeat = false }
 "Mod+V" = { action = "spawn noctalia msg panel-toggle clipboard", repeat = false }
 "Mod+Tab" = { action = "spawn noctalia msg window-switcher hold", repeat = false }
 "Mod+Shift+Tab" = { action = "spawn noctalia msg window-switcher hold reverse", repeat = false }
 "Mod+Slash" = { action = "cheatsheet-toggle", repeat = false }
-"Mod+Shift+Q" = { action = "window-close", repeat = false }
+"Mod+Q" = { action = "window-close", repeat = false }
+"Mod+Shift+Q" = { action = "window-kill", repeat = false }
 "Mod+Escape" = { action = "spawn noctalia msg panel-toggle session", repeat = false }
 "Print" = { action = "spawn noctalia msg screenshot-region", repeat = false }
-"Shift+Print" = { action = "spawn noctalia msg screenshot-fullscreen", repeat = false }
 "Mod+Print" = { action = "spawn noctalia msg screenshot-window", repeat = false }
+"Mod+Shift+Print" = { action = "spawn noctalia msg screenshot-fullscreen", repeat = false }
 
 # Media, volume and brightness keys from any input device, routed through the
 # Noctalia shell so its OSDs show. Safe while the session is locked.
@@ -279,21 +279,44 @@ hide_when_typing = true
 "Mod+M" = { action = "window-toggle-maximize", repeat = false }
 "Mod+Shift+M" = { action = "window-toggle-fullscreen", repeat = false }
 "Mod+P" = { action = "window-toggle-pinned", repeat = false }
-"Mod+R" = "window-cycle-primary-extent"
-"Mod+Shift+R" = "window-cycle-primary-extent-back"
-"Mod+Minus" = "window-modify-primary-extent -0.02"
-"Mod+Equal" = "window-modify-primary-extent +0.02"
-"Mod+Ctrl+Minus" = "window-modify-secondary-extent -0.02"
-"Mod+Ctrl+Equal" = "window-modify-secondary-extent +0.02"
-"Mod+Comma" = "window-consume-left"
-"Mod+Period" = "window-consume-right"
-"Mod+Ctrl+Comma" = "window-consume-from-left"
-"Mod+Ctrl+Period" = "window-consume-from-right"
+"Mod+R" = { action = "window-cycle-primary-extent", repeat = false }
+"Mod+Alt+Left" = "window-modify-primary-extent -0.02"
+"Mod+Alt+Right" = "window-modify-primary-extent +0.02"
+"Mod+Alt+Up" = "window-modify-secondary-extent -0.02"
+"Mod+Alt+Down" = "window-modify-secondary-extent +0.02"
+"Mod+Ctrl+Left" = { action = "window-consume-or-expel-left", repeat = false }
+"Mod+Ctrl+Right" = { action = "window-consume-or-expel-right", repeat = false }
 # Needs layout.mode = "dwindle".
 # "Mod+Alt+T" = "layout-toggle-split"
-"Mod+W" = { action = "column-toggle-tabbed", repeat = false }
-"Mod+Alt+Right" = "column-focus-tab-next"
-"Mod+Alt+Left" = "column-focus-tab-previous"
+"Mod+T" = { action = "submap tabs", repeat = false }
+"submap[tabs],Mod+T" = { action = "column-toggle-tabbed", repeat = false }
+"submap[tabs],Mod+Left" = "column-focus-tab-previous"
+"submap[tabs],Mod+Right" = "column-focus-tab-next"
+"submap[tabs],Mod+H" = "column-focus-tab-previous"
+"submap[tabs],Mod+L" = "column-focus-tab-next"
+"submap[tabs],Mod+1" = "column-focus-tab 1"
+"submap[tabs],Mod+2" = "column-focus-tab 2"
+"submap[tabs],Mod+3" = "column-focus-tab 3"
+"submap[tabs],Mod+4" = "column-focus-tab 4"
+"submap[tabs],Mod+5" = "column-focus-tab 5"
+"submap[tabs],Mod+6" = "column-focus-tab 6"
+"submap[tabs],Mod+7" = "column-focus-tab 7"
+"submap[tabs],Mod+8" = "column-focus-tab 8"
+"submap[tabs],Mod+9" = "column-focus-tab 9"
+"submap[tabs],Mod+Shift+Left" = "column-move-tab-previous"
+"submap[tabs],Mod+Shift+Right" = "column-move-tab-next"
+"submap[tabs],Mod+Shift+H" = "column-move-tab-previous"
+"submap[tabs],Mod+Shift+L" = "column-move-tab-next"
+"submap[tabs],Mod+Shift+1" = "column-move-to-workspace 1"
+"submap[tabs],Mod+Shift+2" = "column-move-to-workspace 2"
+"submap[tabs],Mod+Shift+3" = "column-move-to-workspace 3"
+"submap[tabs],Mod+Shift+4" = "column-move-to-workspace 4"
+"submap[tabs],Mod+Shift+5" = "column-move-to-workspace 5"
+"submap[tabs],Mod+Shift+6" = "column-move-to-workspace 6"
+"submap[tabs],Mod+Shift+7" = "column-move-to-workspace 7"
+"submap[tabs],Mod+Shift+8" = "column-move-to-workspace 8"
+"submap[tabs],Mod+Shift+9" = "column-move-to-workspace 9"
+"submap[tabs],Escape" = "submap reset"
 "Mod+O" = { action = "overview-toggle", repeat = false }
 
 # Workspaces
