@@ -10,7 +10,10 @@ let
 
   palette = config.lib.stylix.colors.withHashtag;
 
-  configFile = pkgs.replaceVars ./umbriel.toml {
+  keybindsFile = pkgs.writeText "keybinds.toml" (builtins.readFile ./keybinds.toml);
+
+  configFile = pkgs.replaceVars ./config.toml {
+    inherit keybindsFile;
     inherit (palette)
       base00
       base01

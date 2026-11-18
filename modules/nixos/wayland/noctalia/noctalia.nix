@@ -5,7 +5,7 @@ in
 {
   home-manager.users.${username}.programs.noctalia = {
     enable = true;
-    settings = lib.importTOML ./noctalia.toml;
+    settings = lib.importTOML ./config.toml;
   };
 
   programs.noctalia = {
